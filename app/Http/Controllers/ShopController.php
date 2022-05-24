@@ -13,7 +13,7 @@ class ShopController extends Controller
         return view('index', ['items' => $items]);
     }
 
-    public function detail($id)
+    public function detail(Request $request)
     {
         //パラメータをアクション内で使用出来る
         $detail= Shop::find($id);
