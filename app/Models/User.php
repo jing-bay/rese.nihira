@@ -42,11 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function booking(){
-    return $this->hasMany('App\Models\Booking');
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 
-    public function favorite(){
-    return $this->hasMany('App\Models\Favorite');
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 }

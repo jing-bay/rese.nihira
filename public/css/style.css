@@ -1,0 +1,100 @@
+.contents {
+  background-color: #eeeeee;
+}
+
+.header{
+  display: flex;
+  position: sticky;
+}
+
+/*メニューボタン*/
+
+.menubtn {
+  position: relative;
+  background: #305dff;
+  cursor: pointer;
+  left: 80px;
+  top: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px #a1a1a1;
+}
+
+.menubtn span {
+  display: inline-block;
+  transition: all .4s;
+  position: absolute;
+  left: 10px;
+  height: 1px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+
+.menubtn span:nth-of-type(1) {
+  top: 12px;
+  width: 20%;
+}
+
+.menubtn span:nth-of-type(2) {
+  top: 19px;
+  width: 50%;
+}
+
+.menubtn span:nth-of-type(3) {
+  top: 26px;
+  width: 10%;
+}
+
+/*activeクラスが付与されると線が回転して×になる*/
+
+.menubtn.active span:nth-of-type(1) {
+  top: 13px;
+  left: 8px;
+  transform: translateY(6px) rotate(-135deg);
+  width: 60%;
+}
+
+.menubtn.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.menubtn.active span:nth-of-type(3) {
+  top:25px;
+  left: 8px;
+  transform: translateY(-6px) rotate(135deg);
+  width: 60%;
+}
+
+
+/**タイトル*/
+.header_title{
+  position: relative;
+  color:#305dff;
+  font-size: 30px;
+  font-weight: bolder;
+  left: 100px;
+  top: 47px;
+}
+
+/*検索フォーム*/
+.search{
+  display: flex;
+  position: relative;
+  left: 300px;
+}
+
+
+/*詳細ページ*/
+.backbtn{
+  position: relative;
+  background: #305dff;
+  cursor: pointer;
+  left: 80px;
+  top: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px #a1a1a1;
+}

@@ -7,21 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shop extends Model
 {
-    protected $guarded = array('id');
+    protected $fillable = ['name','area_id','category_id','overview','url'];
     
-    public function area(){
-        return $this->belongsTo('App\Models\Area');
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
     }
 
-    public function category(){
-        return $this->belongsTo('App\Models\Category');
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
-    public function booking(){
-    return $this->hasMany('App\Models\Booking');
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 
-    public function favorite(){
-    return $this->hasMany('App\Models\Favorite');
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 }

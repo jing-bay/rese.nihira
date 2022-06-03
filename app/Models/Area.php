@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
 {
-    protected $guarded = array('id');
+    protected $fillable = ['name'];
 
-    public function shop(){
-    return $this->hasMany('App\Models\Shop');
+    public function shops()
+    {
+        return $this->hasMany(Shop::class);
     }
 }
 

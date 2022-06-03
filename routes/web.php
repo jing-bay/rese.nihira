@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ThanksController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\BookingController;
 
 /*
 Route::get('/', function () {
@@ -11,28 +15,23 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
 */
-
-Route::get('/register', [RegisteredUserController::class, 'create']);
-Route::post('/register', [RegisteredUserController::class, 'store']);
-
-Route::get('/login', [AuthenticatedSessionController::class, 'create']);
-Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
 
 Route::get('/thanks', [ThanksController::class, 'index']);
 
-Route::get('/', [ShopsController::class, 'index']);
-Route::get('/detail/{shop_id}', [ShopsController::class, 'detail']);
-Route::get('/search', [ShopsController::class, 'search']);
+Route::get('/', [ShopController::class, 'index']);
+Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
+Route::get('/search', [ShopController::class, 'search']);
 
-Route::post('/favorites/{shop_id}', [FavoritesController::class, 'store'])->middleware('auth');
-Route::post('/favorites/delete/{shop_id}', [FavoritesController::class, 'delete'])->middleware('auth');
+Route::middleware(['auth'])->group(function(){
 
-Route::post('/booking/{shop_id}', [BookingsController::class, 'store'])->middleware('auth');
-Route::get('/done', [BookingsController::class, 'done'])->middleware('auth');
-Route::post('/booking/delete/{shop_id}', [BookingsController::class, 'delete'])->middleware('auth');
+    Route::post('/favorites/{shop_id}', [FavoriteController::class, 'store']);
+    Route::post('/favorites/delete/{shop_id}', [FavoriteController::class, 'delete']);
+    Route::post('/booking/{shop_id}', [BookingController::class, 'store']);
+    Route::get('/done', [BookingController::class, 'done']);
+    Route::post('/booking/delete/{shop_id}', [BookingController::class, 'delete']);
 
+});
 
+require __DIR__.'/auth.php';
 
