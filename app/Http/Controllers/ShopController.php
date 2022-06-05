@@ -27,37 +27,33 @@ class ShopController extends Controller
     {
         $search_area = $request->input('search_area');
         $search_category = $request->input('search_category');
-        $keyword = $request->input('keyword');
+        $search_keyword = $request->input('search_keyword');
 
-        $query = Shop::query();
         //テーブル結合
-        $query->join('areas', function ($query) use ($request) {
-            $query->on('shops.area_id', '=', 'areas.id');
-            })->join('categories', function ($query) use ($request) {
-            $query->on('shops.category_id', '=', 'categories.id');
-            });
+        $query = Shop::select('shops.id' ,'shops.name',  'shops.overview' , 'shops.url' , 'areas.name as area_name' , 'categories.name as category_name' )
+            ->join('areas', 'shops.area_id', '=', 'areas.id')
+            ->join('categories', 'shops.category_id', '=', 'categories.id');
 
-        //検索結果反映//
+        //検索結果反映
         if(!empty($search_area)) {
-            $query->where('areas.name', 'LIKE', $search_area);
+            $query->where('areas.id', 'LIKE', $search_area);
         }
 
         if(!empty($search_category)) {
-            $query->where('categories.name', 'LIKE', $search_category);
+            $query->where('categories.id', 'LIKE', $search_category);
         }
 
-        if(!empty($keyword)) {
-            $query->where('name', 'LIKE', "%{$keyword}%");
+        if(!empty($search_keyword)) {
+            $query->where('shops.name', 'LIKE', "%{$search_keyword}%");
         }
         
-        //この引渡し方がダメ？？？//
         $items = $query->get();
 
-        //プルダウン用//
+        //プルダウン用
         $areas = Area::all();
         $categories = Category::all();
 
-        return view('index', compact('items', 'keyword', 'search_area', 'search_category', 'areas', 'categories'));
+        return view('index', compact('items', 'search_keyword', 'search_area', 'search_category', 'areas', 'categories'));
     }
 }
 

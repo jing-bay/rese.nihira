@@ -28,4 +28,5 @@ class Shop extends Model
     {
         return $this->hasMany(Favorite::class);
     }
+
 }
