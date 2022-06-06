@@ -38,8 +38,15 @@
       <div class="card_content_detailbtn">
         <a href="/detail/{{ $item->id }}">詳しく見る</a>
       </div>
-      <div class="card_content_favbtn">
-        <i class="far fa-heart"></i>
+      <div class="card_content_favbtn">]
+        @if($item->is_liked_by_auth_user())
+        <form action="/favorites/{{ $item->id }}" method="post">
+        @else
+        <form action="/favorites/delete/{{ $item->id }}" method="post">
+        @endif
+        @csrf
+          <input type="submit" value="&#xf004;" class="favbtn_icon">
+        </form>
       </div>
     </div>
   </div>
