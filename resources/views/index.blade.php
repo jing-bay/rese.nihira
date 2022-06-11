@@ -40,9 +40,7 @@
         </div>
         <div class="card_content_favbtn">]
           @if($shop->is_liked_by_auth_user())
-
           <form action="/favorites/delete/{{ $favorite_id }}" method="post">
-          @endforeach
           @else
           <form action="/favorites" method="post">
           @endif
