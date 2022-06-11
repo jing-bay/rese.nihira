@@ -41,9 +41,9 @@ class Shop extends Model
         }
 
         if (in_array($id, $fav_users)) {
-        return true;
+            return true;
         } else {
-        return false;
+            return false;
         }
     }
 }

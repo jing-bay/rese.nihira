@@ -5,53 +5,55 @@ namespace App\Http\Controllers;
 use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Category;
+use App\Models\Favorite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
     public function index()
     {
-        $items = Shop::all();
+        $shops = Shop::all();
         $areas = Area::all();
         $categories = Category::all();
-        return view('index', ['items' => $items,'areas' => $areas,'categories' => $categories]);
+
+        $id = Auth::id();
+        $favorite_id = Favorite::where('user_id',$id);
+
+        return view('index', ['shops' => $shops, 'areas' => $areas, 'categories' => $categories, 'favorite_id' => $favorite_id]);
     }
 
     public function detail($shop_id) 
     {
         $shop = Shop::find($shop_id);
-        return view('detail' , ['shop' => $shop]);
+        return view('detail', ['shop' => $shop]);
     }
 
     public function search(Request $request) 
     {
-        $search_area = $request->input('search_area');
-        $search_category = $request->input('search_category');
-        $search_keyword = $request->input('search_keyword');
+        $query = Shop::query();
 
-        if (isset($search_area)) {
-            $shops = Shop::whereHas('area', function($query) use($search_area){
-                $query->where('areas.id', 'LIKE', $search_area);
-            });
+        $search_area = $request->search_area;
+        $search_category = $request->search_category;
+        $search_keyword = $request->search_keyword;
+
+        if(!empty($search_area)) {
+            $query->where('area_id', $search_area);
+        }
+        if(!empty($search_category)) {
+            $query->where('category_id', $search_category);
+        }
+        if(!empty($search_keyword)) {
+            $query->where('name', 'like', '%'.$search_keyword.'%');
         }
 
-        if (isset($search_category)) {
-            $shops = Shop::whereHas('category', function($query) use($search_category){
-                $query->where('categories.id', 'LIKE', $search_category);
-            });
-        }
-
-        if (isset($search_keyword)) {
-            $shops = Shop::where('name', 'LIKE',"%{$search_keyword}%");
-        }
-
-        $items = $shops->get();
+        $shops = $query->get();
         
         //プルダウン用
         $areas = Area::all();
         $categories = Category::all();
 
-        return view('index', compact('items', 'search_keyword', 'search_area', 'search_category', 'areas', 'categories'));
+        return view('index', compact('shops', 'search_keyword', 'search_area', 'search_category', 'areas', 'categories'));
+        
     }
 }
-

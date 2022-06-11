@@ -5,6 +5,7 @@ use App\Http\Controllers\ThanksController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\MypageController;
 
 /*
 Route::get('/', function () {
@@ -14,7 +15,6 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
 */
 
 Route::get('/thanks', [ThanksController::class, 'index']);
@@ -25,11 +25,12 @@ Route::get('/search', [ShopController::class, 'search']);
 
 Route::middleware(['auth'])->group(function(){
 
-    Route::post('/favorites/{shop_id}', [FavoriteController::class, 'store']);
-    Route::post('/favorites/delete/{shop_id}', [FavoriteController::class, 'delete']);
-    Route::post('/booking/{shop_id}', [BookingController::class, 'store']);
+    Route::post('/favorites', [FavoriteController::class, 'store']);
+    Route::post('/favorites/delete/{favorite_id}', [FavoriteController::class, 'delete']);
+    Route::post('/booking', [BookingController::class, 'store']);
     Route::get('/done', [BookingController::class, 'done']);
-    Route::post('/booking/delete/{shop_id}', [BookingController::class, 'delete']);
+    Route::post('/booking/delete/{booking_id}', [BookingController::class, 'delete']);
+    Route::get('/mypage/{user_id}', [MypageController::class, 'index']);
 
 });
 

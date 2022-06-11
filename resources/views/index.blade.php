@@ -17,40 +17,42 @@
     <input type="search" name="search_keyword" class="search_form search_form_keyword" placeholder="Search ...">
   </form>
 
-<div class="item">
-@foreach ($items as $item)
-  <div class="item_card">
-    <div class="item_card_img">
-      <img src="{{ $item->url}}" alt="店舗画像">
+  <div class="shop">
+  @foreach ($shops as $shop)
+    <div class="shop_card">
+      <div class="shop_card_img">
+        <img src="{{ $shop->url }}" alt="店舗画像">
+      </div>
+      <div class="shop_card_content">
+        <div class="card_content_ttl">
+          <h1>{{ $shop->name }}</h1>
+        </div>
+        <div class="card_content_tag">
+          <p class="content_tag_area">
+            #{{ $shop->area->name }}
+          </p>
+          <p class="content_tag_category">
+            #{{ $shop->category->name }}
+          </p>
+        </div>
+        <div class="card_content_detailbtn">
+          <a href="/detail/{{ $shop->id }}">詳しく見る</a>
+        </div>
+        <div class="card_content_favbtn">]
+          @if($shop->is_liked_by_auth_user())
+
+          <form action="/favorites/delete/{{ $favorite_id }}" method="post">
+          @endforeach
+          @else
+          <form action="/favorites" method="post">
+          @endif
+          @csrf
+            <input type="submit" value="&#xf004;" class="favbtn_icon">
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="item_card_content">
-      <div class="card_content_ttl">
-        <h1>{{ $item->name }}</h1>
-      </div>
-      <div class="card_content_tag">
-        <p class="content_tag_area">
-          #{{ $item-> area -> name }}
-        </p>
-        <p class="content_tag_category">
-          #{{ $item-> category -> name }}
-        </p>
-      </div>
-      <div class="card_content_detailbtn">
-        <a href="/detail/{{ $item->id }}">詳しく見る</a>
-      </div>
-      <div class="card_content_favbtn">]
-        @if($item->is_liked_by_auth_user())
-        <form action="/favorites/{{ $item->id }}" method="post">
-        @else
-        <form action="/favorites/delete/{{ $item->id }}" method="post">
-        @endif
-        @csrf
-          <input type="submit" value="&#xf004;" class="favbtn_icon">
-        </form>
-      </div>
-    </div>
+    @endforeach
   </div>
-  @endforeach
-</div>
 
 @endsection
