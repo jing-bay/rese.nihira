@@ -131,18 +131,119 @@ body{
 
 
 /*詳細ページ*/
+.item{
+  display: flex;
+  justify-content: space-between;
+}
+
 .detail{
   margin-top: 100px;
+  width: 46%;
+}
+
+.detail_top{
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.detail_top_title{
+  font-size: 28px;
+  padding-left: 15px;
+}
+
+.detail_img img{
+  width: 100%;
+}
+
+.detail_tag{
+  padding-top: 30px;
+}
+
+.detail_overview{
+  padding-top: 30px;
+  line-height: 24px;
 }
 
 .detail_top_backbtn{
   position: relative;
   background: white;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 5px;
   box-shadow: 3px 3px 3px #a1a1a1;
 }
 
+.booking{
+  width: 46%;
+  background-color: #305dff;
+  border-radius: 5px;
+}
+
+.booking_card{
+  position: relative;
+  left: 30px;
+  top: 30px;
+  color: #fff;
+}
+
+.booking_title{
+  font-size: 24px;
+}
+
+.booking_form{
+  padding-top: 30px;
+}
+
+.booking_form_item{
+  height: 30px;
+  border: 1px solid white;
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.date{
+  width: 50%;
+}
+
+.time{
+  width: 85%;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.number{
+  width: 85%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.booking_content{
+  background-color: #4d7fff;
+  width: 85%;
+  border-radius: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.booking_content_table{
+  text-align: left;
+  margin-left: 30px;
+}
+
+.booking_content_table th{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: lighter;
+}
+
+.booking_content_table td{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+}
 

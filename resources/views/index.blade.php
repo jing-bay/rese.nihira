@@ -1,4 +1,4 @@
-@extends('default')
+@extends('layout.default')
 @section('content')
 
   <form action="/search" class ="search" method="get">
@@ -40,6 +40,7 @@
         </div>
         <div class="card_content_favbtn">]
           @if($shop->is_liked_by_auth_user())
+          <input type="hidden" value="{{ $shop->id }}" name="shop_id">
           <form action="/favorites/delete/{{ $favorite_id }}" method="post">
           @else
           <form action="/favorites" method="post">

@@ -17,10 +17,7 @@ class ShopController extends Controller
         $areas = Area::all();
         $categories = Category::all();
 
-        $id = Auth::id();
-        $favorite_id = Favorite::where('user_id',$id);
-
-        return view('index', ['shops' => $shops, 'areas' => $areas, 'categories' => $categories, 'favorite_id' => $favorite_id]);
+        return view('index', ['shops' => $shops, 'areas' => $areas, 'categories' => $categories]);
     }
 
     public function detail($shop_id) 

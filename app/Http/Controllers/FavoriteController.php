@@ -14,11 +14,10 @@ class FavoriteController extends Controller
             'shop_id' => $request->shop_id,
             'user_id' => Auth::id(),
         ]);
-        
         return back();
     }
 
-    public function delete($favorite_id)
+    public function delete($id)
     {
         Favorite::find($favorite_id)->delete();
 

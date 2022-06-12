@@ -25,27 +25,27 @@ document.getElementById("currenttime").value = hh + ':' + '00';
 //詳細ページ：入力終わったら自動で反映
 window.addEventListener('DOMContentLoaded', function () {
     
-    const date = document.getElementById("date");
-    const time = document.getElementById("time");
+    const date = document.getElementById("tomorrow");
+    const time = document.getElementById("currenttime");
     const number = document.getElementById("number");
     
 
-    date.addEventListener("change",function(){
-        let inputed_date = document.getElementById('inputed_date');//inputed_dateのidを検索して
-        inputed_date.value = date.value
+    date.addEventListener("input",function(){
+        let inputed_date = document.getElementById('inputed_date');
+        inputed_date.textContent = date.value
         });
     
     
 
     time.addEventListener("input", function () {
-        let inputed_time = document.getElementById('inputed_time');//inputed_dateのidを検索して
-        inputed_time.value = time.value;
+        let inputed_time = document.getElementById('inputed_time');
+        inputed_time.textContent = time.value;
     });
     
     
     number.addEventListener("input", function () {
-        let inputed_number = document.getElementById('inputed_number');//inputed_dateのidを検索して
-        inputed_number.value = number.value;
+        let inputed_number = document.getElementById('inputed_number');
+        inputed_number.textContent = number.value;
     });
 })
 

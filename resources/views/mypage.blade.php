@@ -1,4 +1,4 @@
-@extends('default')
+@extends('layouts.default')
 @section('content')
 <div class="item">
   <div class="mypage_booking">
