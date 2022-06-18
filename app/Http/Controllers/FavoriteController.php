@@ -17,7 +17,7 @@ class FavoriteController extends Controller
         return back();
     }
 
-    public function delete($id)
+    public function delete($favorite_id)
     {
         Favorite::find($favorite_id)->delete();
 

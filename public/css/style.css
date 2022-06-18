@@ -1,15 +1,48 @@
+/*
+* {
+  outline: 1px solid red !important;
+}
+*/
+*:focus {
+  outline: none;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+input {
+  outline: none;
+}
+
 body{
   background-color: #eeeeee;
 }
 
 .contents {
-  margin-left: 100px;
+  margin-left: 120px;
   margin-right: 100px;
 }
 
 .header{
   display: flex;
-  position: sticky;
+}
+
+/*タイトル*/
+.header_title {
+  position: relative;
+  color: #305dff;
+  font-size: 30px;
+  font-weight: bolder;
+  left:45px;
+  top: 45px;
+  z-index: 1000;
 }
 
 /*メニューボタン*/
@@ -23,6 +56,7 @@ body{
   height: 40px;
   border-radius: 5px;
   box-shadow: 3px 3px 3px #a1a1a1;
+  z-index: 1500;
 }
 
 .menubtn span {
@@ -71,16 +105,120 @@ body{
   width: 60%;
 }
 
-
-/*タイトル*/
-.header_title{
-  position: relative;
-  color:#305dff;
-  font-size: 30px;
-  font-weight: bolder;
-  left: 30px;
-  top: 47px;
+/*メニュー*/
+.header_nav{
+  display: none;
 }
+
+.header_nav.active {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #eeeeee;
+  transition: ease .4s;
+  z-index: 1000;
+  padding-top: 200px;
+}
+
+.nav_items.active {
+  padding: 0;
+}
+
+.nav-items_item{
+  font-size: 24px;
+  color: #305dff;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.menu_item_mypage{
+  font-size: 24px;
+  color: #305dff;
+  border: none;
+  cursor: pointer;
+  font-weight: 100;
+}
+
+/*登録画面*/
+.login{
+  margin-top: 150px;
+}
+
+.login_card{
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 5px;
+  width: 30%;
+  box-shadow: 0px 3px 3px #a1a1a1;
+}
+
+.login_header{
+  background-color: #305dff;
+  border: 1px solid #305dff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 100%;
+  color: #fff;
+  font-size: 16px;
+  box-sizing: border-box;
+  padding-left: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.login_content{
+  padding: 0px 30px 20px;
+}
+
+.login_content li {
+  padding-top: 20px;
+}
+
+.login_input {
+  margin-bottom: 15px;
+}
+
+.login_input_item{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #3b3b3b;
+  width:85%;
+  font-size: 14px;
+}
+
+.login_validation{
+  color: red;
+  font-size: 12px;
+}
+
+.login_icn{
+  width: 24px;
+  position: relative;
+  top: 6px;
+}
+
+.login_btn{
+  text-align: right;
+  position: relative;
+  right: 10px;
+}
+
+.login_btn_item{
+  display: inline-block;
+  background-color: #305dff;
+  border: 1px solid #305dff;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
 
 /*検索フォーム*/
 .search{
@@ -118,7 +256,7 @@ body{
 }
 
 .shop_card{
-  width: 24%;
+  width: 290px;
   box-shadow: 0px 3px 10px #3b3b3b;
   border-radius: 5px;
   margin-bottom: 40px;
@@ -129,6 +267,35 @@ body{
   border-radius: 5px 5px 0px 0px;
 }
 
+.shop_card_content{
+  background-color: #fff;
+  padding: 15px;
+}
+
+.card_content_ttl{
+  font-size: 18px;
+}
+
+.card_content_tag{
+  display: flex;
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+.card_content_footer{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.card_content_detailbtn{
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.fav_btn{
+  width: 13%;
+}
 
 /*詳細ページ*/
 .item{
@@ -178,17 +345,14 @@ body{
   width: 46%;
   background-color: #305dff;
   border-radius: 5px;
-}
-
-.booking_card{
   position: relative;
-  left: 30px;
-  top: 30px;
+  padding-top: 30px;
   color: #fff;
 }
 
 .booking_title{
   font-size: 24px;
+  padding-left: 30px;
 }
 
 .booking_form{
@@ -201,6 +365,7 @@ body{
   border-radius: 5px;
   display: block;
   margin-bottom: 15px;
+  margin-left: 30px;
 }
 
 .date{
@@ -228,17 +393,20 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   border-radius: 5px;
   padding-top: 20px;
   padding-bottom: 20px;
+  margin-left: 30px;
 }
 
 .booking_content_table{
   text-align: left;
   margin-left: 30px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .booking_content_table th{
   padding-top: 10px;
   padding-bottom: 10px;
-  font-weight: lighter;
+  font-weight: 500;
 }
 
 .booking_content_table td{
@@ -247,3 +415,124 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   padding-left: 40px;
 }
 
+.bookbtn{
+  background-color: #0538ff;
+  width: 100%;
+  color: #fff;
+  border: 1px solid #0538ff;
+  height: 60px;
+  font-size: 16px;
+  position:absolute;
+  bottom: 0;
+  border-radius: 0px 0px 5px 5px;
+  cursor: pointer;
+}
+
+/*予約完了ページ*/
+.thanks{
+  background-color: #fff;
+  border: 1px solid #fff; 
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px #a1a1a1;
+  position: relative;
+  top: 100px;
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.thanks_content{
+  font-size: 24px;
+  font-weight: lighter;
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.btn{
+  display: inline-block;
+  background-color: #305dff;
+  border: 1px solid #305dff;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px 15px;
+}
+
+.backbtn{
+  margin-bottom: 100px;
+
+}
+
+/*マイページ*/
+.mypage{
+  display: flex;
+  margin-top: 50px;
+}
+
+.username {
+  font-size: 30px;
+  padding-left: 43vw;
+  padding-top: 60px;
+}
+
+.mypage_booking{
+  width: 50%;
+}
+
+.mypage_booking_ttl {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.mypage_booking_card{
+  background-color: #305dff;
+  border: 1px solid #305dff;
+  border-radius: 5px;
+  color: #fff;
+  width: 70%;
+  margin-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.booking_card_header{
+  display: flex;
+  padding-bottom: 20px;
+  padding-left: 30px;
+}
+
+.clockicn {
+  width: 7%;
+}
+
+.deleteicn {
+  border: none;
+  width: 7%;
+  margin-left: 250px;
+}
+
+.deleteicn:hover {
+  cursor: pointer;
+}
+
+.booking_card_ttl{
+  font-size: 16px;
+  padding-left: 25px;
+  padding-top: 5px;
+}
+
+.mypage_favorite {
+  width: 50%;
+}
+
+.mypage_favorite_ttl{
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.favorite_shop{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

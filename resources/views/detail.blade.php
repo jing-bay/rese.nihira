@@ -19,11 +19,11 @@
     <div class="booking">
       <div class="booking_card">
         <h1 class="booking_title">予約</h1>
-        <form action="/booking/{{ $shop->id }}" id="booking_form" class="booking_form" method="post">
+        <form action="/booking" id="booking_form" class="booking_form" method="post">
           @csrf
           <input type="date" name="booking_date" class="booking_form_item date" id="tomorrow">
           <input type="time" name="booking_time" class="booking_form_item time" id="currenttime">
-          <select name="number" class="booking_form_item number" id="number">
+          <select name="booking_number" class="booking_form_item number" id="number">
             <option value="1">1人</option>
             <option value="2">2人</option>
             <option value="3">3人</option>
@@ -39,7 +39,7 @@
               </tr>
               <tr>
                 <th>Date</th>
-                <td><div id="inputed_date"></div></td>
+                <td id="inputed_date"></td>
               </tr>
               <tr>
                 <th>Time</th>
@@ -52,6 +52,7 @@
             </table>
           </div>
           <input type="submit" name="bookbtn" class="bookbtn" value="予約する">
+          <input type="hidden" value="{{ $shop->id }}" name="shop_id">
         </form>
       </div>
     </div>

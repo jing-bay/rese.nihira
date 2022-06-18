@@ -11,12 +11,38 @@
 <body>
   <div class="contents">
     <header class="header">
-      <div class="menubtn">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="header_menu" >
+        <nav class="header_nav" id="js-nav">
+          <ul class="nav_items">
+            @guest
+            <li class="nav-items_item"><a href="/">Home</a></li>
+            <li class="nav-items_item"><a href="/register">Registration</a></li>
+            <li class="nav-items_item"><a href="/login">Login</a></li>
+            @endguest
+            @auth
+            <li class="nav-items_item"><a href="/">Home</a></li>
+            <li class="nav-items_item">
+              <form action="/logout" method="post">
+                @csrf
+                <input type="submit" class="menu_item_mypage" value="Logout">
+              </form>
+            </li>
+            <li class="nav-items_item">
+              <form action="/mypage/{{ $id }}" method="get">
+                @csrf
+                <input type="submit" class="menu_item_mypage" value="Mypage">
+              </form>
+            </li>
+            @endauth
+          </ul>
+        </nav>
+        <div class="menubtn" id="menubtn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
-      <h1 class="header_title">Rese</h1>
+      <a href="/" class="header_title">Rese</a>
     </header>
     @yield('content')
   </div>

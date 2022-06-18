@@ -1,20 +1,32 @@
-@extends('layout.default')
+@extends('layouts.default')
 @section('content')
 
   <form action="/search" class ="search" method="get">
-    <select name="search_area" class="search_form search_form_area">
-      <option value="" selected>All areas</option>
+    <select name="search_area" class="search_form search_form_area" id="search_area" onchange="submit(this.form)">
+      <option value="">All areas</option>
       @foreach ($areas as $area)
-      <option value="{{ $area->id }}">{{ $area->name }}</option>
+      @if(!empty($search_area) && $search_area == $area->id)
+        <option value = "{{ $area->id }}" selected>{{ $area->name }}</option>
+      @else
+        <option value="{{ $area->id }}">{{ $area->name }}</option>
+      @endif
       @endforeach
     </select>
-    <select name="search_category" class="search_form search_form_category">
+    <select name="search_category" class="search_form search_form_category" id="search_category" onchange="submit(this.form)">
       <option value="" selected>All categories</option>
       @foreach ($categories as $category)
-      <option value="{{ $category->id }}" >{{ $category->name }}</option>
+      @if(!empty($search_category) && $search_category == $category->id)
+        <option value = "{{ $category->id }}" selected>{{ $category->name }}</option>
+        @else
+        <option value="{{ $category->id }}" >{{ $category->name }}</option>
+      @endif
       @endforeach
     </select>
-    <input type="search" name="search_keyword" class="search_form search_form_keyword" placeholder="Search ...">
+    @if(!empty($search_keyword))
+    <input type="search" value="{{$search_keyword}}" name="search_keyword" class="search_form search_form_keyword" placeholder="Search ..." id="search_keyword" onchange="submit(this.form)">
+    @else
+    <input type="search" name="search_keyword" class="search_form search_form_keyword" placeholder="Search ..." id="search_keyword" onchange="submit(this.form)">
+    @endif
   </form>
 
   <div class="shop">
@@ -35,23 +47,27 @@
             #{{ $shop->category->name }}
           </p>
         </div>
-        <div class="card_content_detailbtn">
-          <a href="/detail/{{ $shop->id }}">詳しく見る</a>
-        </div>
-        <div class="card_content_favbtn">]
+        <div class="card_content_footer">
+          <div class="card_content_detailbtn btn">
+            <a href="/detail/{{ $shop->id }}">詳しくみる</a>
+          </div>
           @if($shop->is_liked_by_auth_user())
-          <input type="hidden" value="{{ $shop->id }}" name="shop_id">
-          <form action="/favorites/delete/{{ $favorite_id }}" method="post">
+            @foreach($favorites as $favorite)
+              @if($favorite->shop_id == $shop->id)
+              <form action="/favorites/delete/{{ $favorite->id }}" method="post">
+                <input type="image" src="{{ asset('image/fav.png')}}" class="fav_btn">
+              @endif
+            @endforeach
           @else
           <form action="/favorites" method="post">
-          @endif
+            <input type="hidden" value="{{ $shop->id }}" name="shop_id">
+            <input type="image" src="{{ asset('image/unfav.png')}}" class="fav_btn">
+          @endif    
           @csrf
-            <input type="submit" value="&#xf004;" class="favbtn_icon">
           </form>
         </div>
       </div>
     </div>
     @endforeach
   </div>
-
 @endsection

@@ -17,13 +17,17 @@ class ShopController extends Controller
         $areas = Area::all();
         $categories = Category::all();
 
-        return view('index', ['shops' => $shops, 'areas' => $areas, 'categories' => $categories]);
+        $id = Auth::id();
+        $favorites = Favorite::where('user_id',$id)->get();
+
+        return view('index', ['shops' => $shops, 'areas' => $areas, 'categories' => $categories, 'favorites' => $favorites, 'id'=>$id]);
     }
 
     public function detail($shop_id) 
     {
         $shop = Shop::find($shop_id);
-        return view('detail', ['shop' => $shop]);
+        $id = Auth::id();
+        return view('detail', ['shop' => $shop, 'id'=>$id ]);
     }
 
     public function search(Request $request) 
@@ -50,7 +54,9 @@ class ShopController extends Controller
         $areas = Area::all();
         $categories = Category::all();
 
-        return view('index', compact('shops', 'search_keyword', 'search_area', 'search_category', 'areas', 'categories'));
-        
+        $id = Auth::id();
+        $favorites = Favorite::where('user_id',$id)->get();
+
+        return view('index', compact('shops', 'search_keyword', 'search_area', 'search_category', 'areas', 'categories', 'id', 'favorites'));
     }
 }
