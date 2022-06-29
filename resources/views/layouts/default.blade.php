@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" href="{{ mix('css/reset.css') }}">
+  <link rel="stylesheet" href="{{ mix('css/style.css') }}">
   <title>Rese</title>
 </head>
 <body>
@@ -20,18 +20,17 @@
             <li class="nav-items_item"><a href="/login">Login</a></li>
             @endguest
             @auth
-            <li class="nav-items_item"><a href="/">Home</a></li>
+            <li class="nav-items_item">
+              <a href="/">Home</a>
+            </li>
             <li class="nav-items_item">
               <form action="/logout" method="post">
                 @csrf
-                <input type="submit" class="menu_item_mypage" value="Logout">
+                <input type="submit" class="menu_item_logout" value="Logout">
               </form>
             </li>
             <li class="nav-items_item">
-              <form action="/mypage/{{ $id }}" method="get">
-                @csrf
-                <input type="submit" class="menu_item_mypage" value="Mypage">
-              </form>
+              <a href="/mypage">Mypage</a>
             </li>
             @endauth
           </ul>

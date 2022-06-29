@@ -27,7 +27,8 @@ class ShopController extends Controller
     {
         $shop = Shop::find($shop_id);
         $id = Auth::id();
-        return view('detail', ['shop' => $shop, 'id'=>$id ]);
+
+        return view('detail', ['shop'=>$shop, 'id'=>$id]);
     }
 
     public function search(Request $request) 

@@ -8,35 +8,83 @@
       @foreach ($shops as $shop)
       @foreach($bookings as $booking)
       @if($booking->shop_id == $shop->id)
-      <form action="/booking/delete/{{ $booking->id}}" method="post">  
-        @csrf
-        <div class="mypage_booking_card">
-          <div class="booking_card_header">
-            <img src="{{ asset('image/clock.png')}}" class="clockicn" alt="clockicn">
-            <p class="booking_card_ttl">予約{{$loop->iteration}}</p>
-            <input type="image" src="{{ asset('image/delete.png')}}" alt="削除する" class="deleteicn">
-          </div>
+      <div class="mypage_booking_card">
+        <div class="booking_card_header">
+          <img src="{{ asset('image/clock.png' )}}" class="clockicn" alt="clockicn">
+          <p class="booking_card_ttl">予約{{ $loop->iteration }}</p>
+          <form action="/booking/delete/{{ $booking->id }}" method="post" id="booking_delete">@csrf</form>
+          <input type="image" src="{{ asset('image/delete.png')}}" alt="削除する" class="deleteicn" form="booking_delete">
+        </div>
+        <form action="/booking/update/{{ $booking->id }}" class="booking_form" method="post">
+          @csrf
           <table class="booking_content_table">
             <tr>
               <th>Shop</th>
-              <td>{{ $shop->name }}</td>
+              <td>
+                <input type="hidden" value="{{ $shop->id }}" name="shop_id">
+                {{ $shop->name }}
+              </td>
             </tr>
             <tr>
               <th>Date</th>
-              <td>{{ $booking->booking_date }}</td>
+              <td>
+                <input type="date" name="booking_date" class="mypage_booking_input" value="{{ $booking->booking_date }}">
+              </td>
             </tr>
             <tr>
               <th>Time</th>
-              <td>{{ $booking->booking_time }}</td>
+              <td>
+                <select name="booking_time" class="mypage_booking_input" id="currenttime">
+                  @for ($i = 10; $i <= 23; $i++) 
+                    @for ($j = 0; $j <= 30; $j += 30) 
+                      <option value="{{$i}}:{{$j}}">{{$i}}:{{$j}}</option>
+                    @endfor
+                  @endfor
+                </select>
+              </td>
             </tr>
             <tr>
               <th>Number</th>
-              <td>{{ $booking->number }}人</td>
+              <td>
+                <select name="number" class="mypage_booking_input">
+                  @if( $booking->number == 1 )
+                  <option value="1" selected>1人</option>
+                  @else
+                  <option value="1">1人</option>
+                  @endif
+                  @if( $booking->number == 2 )
+                  <option value="2" selected>2人</option>
+                  @else
+                  <option value="2">2人</option>
+                  @endif
+                  @if( $booking->number == 3 )
+                  <option value="3" selected>3人</option>
+                  @else
+                  <option value="3">3人</option>
+                  @endif
+                  @if( $booking->number == 4 )
+                  <option value="4" selected>4人</option>
+                  @else
+                  <option value="4">4人</option>
+                  @endif
+                  @if( $booking->number == 5 )
+                  <option value="5" selected>5人</option>
+                  @else
+                  <option value="5">5人</option>
+                  @endif
+                  @if( $booking->number == 6 )
+                  <option value="6" selected>6人</option>
+                  @else
+                  <option value="6">6人</option>
+                  @endif
+                </select>
+              </td>
             </tr>
           </table>
-          <input type="hidden" value="{{ $shop->id }}" name="shop_id">
-        </div>
-      </form>
+          <input type="hidden" value="{{ $user->id }}" name="user_id">
+          <input type="submit"  value="予約を変更する" class="booking_update_btn">
+        </form>
+      </div>
       @endif
       @endforeach 
       @endforeach

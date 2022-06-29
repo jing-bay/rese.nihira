@@ -20,7 +20,7 @@ document.getElementById("tomorrow").value = yyyy + '-' + mm + '-' + dd;
 //詳細ページ：今から一番近い時間をデフォルトで表示
 
 const time = new Date();
-const hh = ("0" + (time.getHours() + 1)).slice(-2);
+const hh = ("0" + (date.getHours())).slice(-2);
 
 document.getElementById("currenttime").value = hh + ':' + '00';
 

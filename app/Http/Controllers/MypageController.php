@@ -18,7 +18,7 @@ class MypageController extends Controller
         
         $id = Auth::id();
         $favorites = Favorite::where('user_id',$id)->get();
-        $bookings = Booking::where('user_id',$id)->get();
+        $bookings = Booking::where('user_id',$id)->orderBy('booking_date','asc')->get();
 
         return view('mypage', ['shops' => $shops, 'favorites' => $favorites, 'bookings' => $bookings, 'user' => $user ,'id' => $id]);
     }

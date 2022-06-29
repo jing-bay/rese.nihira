@@ -13,7 +13,7 @@
       @endforeach
     </select>
     <select name="search_category" class="search_form search_form_category" id="search_category" onchange="submit(this.form)">
-      <option value="" selected>All categories</option>
+      <option value="">All categories</option>
       @foreach ($categories as $category)
       @if(!empty($search_category) && $search_category == $category->id)
         <option value = "{{ $category->id }}" selected>{{ $category->name }}</option>
@@ -54,12 +54,12 @@
           @if($shop->is_liked_by_auth_user())
             @foreach($favorites as $favorite)
               @if($favorite->shop_id == $shop->id)
-              <form action="/favorites/delete/{{ $favorite->id }}" method="post">
+              <form action="/favorites/delete/{{ $favorite->id }}" method="post" class="card_content_fav">
                 <input type="image" src="{{ asset('image/fav.png')}}" class="fav_btn">
               @endif
             @endforeach
           @else
-          <form action="/favorites" method="post">
+          <form action="/favorites" method="post" class="card_content_fav">
             <input type="hidden" value="{{ $shop->id }}" name="shop_id">
             <input type="image" src="{{ asset('image/unfav.png')}}" class="fav_btn">
           @endif    

@@ -15,7 +15,7 @@ class BookingController extends Controller
             'user_id' => Auth::id(),
             'booking_date' => $request->booking_date,
             'booking_time' => $request->booking_time,
-            'number' => $request->booking_number,
+            'number' => $request->number,
         ]);
 
         return redirect('/done');
@@ -27,10 +27,17 @@ class BookingController extends Controller
         return view('done',['id' => $id]);
     }
 
+    public function update(Request $request, $booking_id)
+    {
+        $form = $request->all();
+        unset($form['_token']);
+        Booking::find($booking_id)->update($form);
+        return redirect('/done');
+    }
+
     public function delete($booking_id)
     { 
         Booking::find($booking_id)->delete();
-        
         return back();
     }
 }

@@ -3,6 +3,8 @@
   outline: 1px solid red !important;
 }
 */
+
+
 *:focus {
   outline: none;
 }
@@ -66,9 +68,8 @@ body{
   left: 10px;
   height: 1px;
   border-radius: 2px;
-  background: #fff;
+  background: #ffffff;
 }
-
 
 .menubtn span:nth-of-type(1) {
   top: 12px;
@@ -134,7 +135,7 @@ body{
   text-align: center;
 }
 
-.menu_item_mypage{
+.menu_item_logout{
   font-size: 24px;
   color: #305dff;
   border: none;
@@ -161,7 +162,7 @@ body{
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   width: 100%;
-  color: #fff;
+  color: #ffffff;
   font-size: 16px;
   box-sizing: border-box;
   padding-left: 15px;
@@ -191,7 +192,7 @@ body{
 }
 
 .login_validation{
-  color: red;
+  color: #e60033;
   font-size: 12px;
 }
 
@@ -212,13 +213,12 @@ body{
   background-color: #305dff;
   border: 1px solid #305dff;
   border-radius: 5px;
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   font-size: 14px;
   padding: 5px 10px;
   cursor: pointer;
 }
-
 
 /*検索フォーム*/
 .search{
@@ -229,16 +229,18 @@ body{
 
 .search_form{
   height: 40px;
-  border: 1px solid white;
+  border: 1px solid #ffffff;
   width: 30%;
 }
 
-.search_form_area{
+.search_form_area {
   width: 10%;
+  cursor: pointer;
 }
 
 .search_form_category {
   width: 10%;
+  cursor: pointer;
 }
 
 .search_form_keyword{
@@ -247,57 +249,68 @@ body{
 
 /*一覧ページ*/
 
-.shop{
+.shop {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  position: relative;
   padding-top: 50px;
 }
 
-.shop_card{
+.shop_card {
   width: 290px;
-  box-shadow: 0px 3px 10px #3b3b3b;
+  height: 280px;
+  box-shadow: 0px 3px 10px #a1a1a1;
+  background-color: #ffffff;
   border-radius: 5px;
   margin-bottom: 40px;
+  box-sizing: border-box;
 }
 
 .shop_card_img img {
   width: 100%;
+  height: 150px;
   border-radius: 5px 5px 0px 0px;
+  object-fit: cover;
 }
 
-.shop_card_content{
-  background-color: #fff;
+.shop_card_content {
   padding: 15px;
+  
 }
 
-.card_content_ttl{
+.card_content_ttl {
   font-size: 18px;
 }
 
-.card_content_tag{
+.card_content_tag {
   display: flex;
   font-size: 12px;
-  padding-top: 10px;
+  padding: 10px 0px;
 }
 
-.card_content_footer{
+.card_content_footer {
   display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
+  justify-content: space-between;
+  margin: 10px 0px;
+  align-items: center;
 }
 
-.card_content_detailbtn{
-  margin-top: 10px;
+.card_content_detailbtn {
   display: inline-block;
 }
 
-.fav_btn{
-  width: 13%;
+.card_content_fav {
+  text-align: right;
+  width: 50%;
+  padding-right: 10px;
+}
+
+.fav_btn {
+  width: 35px;
 }
 
 /*詳細ページ*/
+
 .item{
   display: flex;
   justify-content: space-between;
@@ -333,7 +346,7 @@ body{
 
 .detail_top_backbtn{
   position: relative;
-  background: white;
+  background: #ffffff;
   cursor: pointer;
   width: 30px;
   height: 30px;
@@ -341,13 +354,34 @@ body{
   box-shadow: 3px 3px 3px #a1a1a1;
 }
 
+.detail_top_backbtn span{
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  height: 2px;
+  border-radius: 5px;
+  background-color: #3b3b3b;
+}
+
+.detail_top_backbtn span:nth-of-type(1) {
+  top: 11px;
+  width: 40%;
+  transform: rotate(-30deg) translateY(1px);
+}
+
+.detail_top_backbtn span:nth-of-type(2) {
+  top: 18px;
+  width: 40%;
+  transform: rotate(30deg) translateY(-1px);
+}
+
 .booking{
   width: 46%;
+  height: 600px;
   background-color: #305dff;
   border-radius: 5px;
-  position: relative;
   padding-top: 30px;
-  color: #fff;
+  color: #ffffff;
 }
 
 .booking_title{
@@ -361,11 +395,11 @@ body{
 
 .booking_form_item{
   height: 30px;
-  border: 1px solid white;
+  border: 1px solid #ffffff;
   border-radius: 5px;
-  display: block;
   margin-bottom: 15px;
   margin-left: 30px;
+  cursor: pointer;
 }
 
 .date{
@@ -374,6 +408,7 @@ body{
 
 .time{
   width: 85%;
+  box-sizing: border-box;
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator {
@@ -382,9 +417,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .number{
   width: 85%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  box-sizing: border-box;
 }
 
 .booking_content{
@@ -418,20 +451,19 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .bookbtn{
   background-color: #0538ff;
   width: 100%;
-  color: #fff;
+  color: #ffffff;
   border: 1px solid #0538ff;
   height: 60px;
   font-size: 16px;
-  position:absolute;
-  bottom: 0;
   border-radius: 0px 0px 5px 5px;
   cursor: pointer;
+  margin-top: 230px;
 }
 
 /*予約完了ページ*/
 .thanks{
-  background-color: #fff;
-  border: 1px solid #fff; 
+  background-color: #ffffff;
+  border: 1px solid #ffffff; 
   border-radius: 5px;
   box-shadow: 3px 3px 3px #a1a1a1;
   position: relative;
@@ -453,7 +485,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   background-color: #305dff;
   border: 1px solid #305dff;
   border-radius: 5px;
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   font-size: 14px;
   padding: 10px 15px;
@@ -461,7 +493,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .backbtn{
   margin-bottom: 100px;
-
 }
 
 /*マイページ*/
@@ -477,7 +508,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .mypage_booking{
-  width: 50%;
+  width: 43vw;
 }
 
 .mypage_booking_ttl {
@@ -487,28 +518,27 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .mypage_booking_card{
   background-color: #305dff;
-  border: 1px solid #305dff;
   border-radius: 5px;
-  color: #fff;
-  width: 70%;
+  color: #ffffff;
+  width: 430px;
   margin-bottom: 10px;
   padding-top: 20px;
-  padding-bottom: 20px;
+  box-shadow: 0px 3px 10px #a1a1a1;
+  box-sizing: border-box;
 }
 
 .booking_card_header{
   display: flex;
-  padding-bottom: 20px;
   padding-left: 30px;
 }
 
 .clockicn {
-  width: 7%;
+  width: 30px;
 }
 
 .deleteicn {
   border: none;
-  width: 7%;
+  width: 30px;
   margin-left: 250px;
 }
 
@@ -520,6 +550,28 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   font-size: 16px;
   padding-left: 25px;
   padding-top: 5px;
+}
+
+.mypage_booking_input{
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 3px 0px ;
+  height: 30px;
+  cursor: pointer;
+}
+
+.booking_update_btn{
+  background-color: #0538ff;
+  width: 100%;
+  color: #ffffff;
+  border: 1px solid #0538ff;
+  height: 60px;
+  font-size: 16px;
+  border-radius: 0px 0px 5px 5px;
+  cursor: pointer;
+  margin-top: 30px;
 }
 
 .mypage_favorite {
