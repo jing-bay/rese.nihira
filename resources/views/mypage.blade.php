@@ -6,12 +6,14 @@
     <h2 class="mypage_booking_ttl">予約状況</h2>
     <div class="booking_shop">
       @foreach ($shops as $shop)
-      @foreach($bookings as $booking)
+      @foreach($bookings as $index => $booking)
       @if($booking->shop_id == $shop->id)
       <div class="mypage_booking_card">
         <div class="booking_card_header">
           <img src="{{ asset('image/clock.png' )}}" class="clockicn" alt="clockicn">
-          <p class="booking_card_ttl">予約{{ $loop->iteration }}</p>
+          <p class="booking_card_ttl">
+            予約{{$index+1}}
+          </p>
           <form action="/booking/delete/{{ $booking->id }}" method="post" id="booking_delete">@csrf</form>
           <input type="image" src="{{ asset('image/delete.png')}}" alt="削除する" class="deleteicn" form="booking_delete">
         </div>
@@ -36,8 +38,16 @@
               <td>
                 <select name="booking_time" class="mypage_booking_input" id="currenttime">
                   @for ($i = 10; $i <= 23; $i++) 
-                    @for ($j = 0; $j <= 30; $j += 30) 
-                      <option value="{{$i}}:{{$j}}">{{$i}}:{{$j}}</option>
+                    @for ($j = 0; $j <= 30; $j += 30)
+                      @if($booking->booking_time == "$i:0")
+                        <option value="{{$i}}:00" selected>{{$i}}:00</option>
+                        @elseif($booking->booking_time == "$i:$j")
+                        <option value="{{$i}}:{{$j}}" selected>{{$i}}:{{$j}}</option>
+                        @elseif($j == 0)
+                        <option value="{{$i}}:00">{{$i}}:00</option>
+                        @else
+                        <option value="{{$i}}:{{$j}}">{{$i}}:{{$j}}</option>
+                      @endif
                     @endfor
                   @endfor
                 </select>

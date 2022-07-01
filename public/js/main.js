@@ -1,9 +1,9 @@
 //メニュー表示
 const ham = $('#menubtn');
 const nav = $('#js-nav');
-ham.on('click', function () { //ハンバーガーメニューをクリックしたら
-    ham.toggleClass('active'); // ハンバーガーメニューにactiveクラスを付け外し
-    nav.toggleClass('active'); // ナビゲーションメニューにactiveクラスを付け外し
+ham.on('click', function () {
+    ham.toggleClass('active');
+    nav.toggleClass('active');
 });
 
 //詳細ページ：次の日の日付をデフォルトで表示
@@ -19,10 +19,10 @@ document.getElementById("tomorrow").value = yyyy + '-' + mm + '-' + dd;
     
 //詳細ページ：今から一番近い時間をデフォルトで表示
 
-const time = new Date();
-const hh = ("0" + (date.getHours())).slice(-2);
+    const time = new Date();
+    const hh = ("0" + (time.getHours())).slice(-2);
 
-document.getElementById("currenttime").value = hh + ':' + '00';
+    document.getElementById("currenttime").value = hh + ':' + '00';
 
 //詳細ページ：入力終わったら自動で反映
 window.addEventListener('DOMContentLoaded', function () {

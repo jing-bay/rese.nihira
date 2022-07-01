@@ -26,8 +26,12 @@
         <input type="date" name="booking_date" class="booking_form_item date" id="tomorrow">
         <select name="booking_time" class="booking_form_item time" id="currenttime">
           @for ($i = 10; $i <= 23; $i++) 
-            @for ($j = 0; $j <= 30; $j += 30) 
-              <option value="{{$i}}:{{$j}}">{{$i}}:{{$j}}</option>
+            @for ($j = 0; $j <= 30; $j += 30)
+              @if($j == 0)
+                <option value="{{$i}}:00">{{$i}}:00</option>
+              @else
+                <option value="{{$i}}:{{$j}}">{{$i}}:{{$j}}</option>
+              @endif
             @endfor
           @endfor
         </select>
