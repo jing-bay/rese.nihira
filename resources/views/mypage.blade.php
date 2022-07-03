@@ -39,15 +39,9 @@
                 <select name="booking_time" class="mypage_booking_input" id="currenttime">
                   @for ($i = 10; $i <= 23; $i++) 
                     @for ($j = 0; $j <= 30; $j += 30)
-                      @if($booking->booking_time == "$i:0")
-                        <option value="{{$i}}:00" selected>{{$i}}:00</option>
-                        @elseif($booking->booking_time == "$i:$j")
-                        <option value="{{$i}}:{{$j}}" selected>{{$i}}:{{$j}}</option>
-                        @elseif($j == 0)
-                        <option value="{{$i}}:00">{{$i}}:00</option>
-                        @else
-                        <option value="{{$i}}:{{$j}}">{{$i}}:{{$j}}</option>
-                      @endif
+                    <option value="{{ $i }}:{{ sprintf('%002d', $j) }}" {{ ($booking->booking_time == $i.':'.sprintf('%002d', $j)) ? "selected":""}}>
+                      {{ $i }}:{{ sprintf('%002d', $j) }} 
+                    </option>
                     @endfor
                   @endfor
                 </select>
