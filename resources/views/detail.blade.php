@@ -28,20 +28,17 @@
           @for ($i = 10; $i <= 23; $i++) 
             @for ($j = 0; $j <= 30; $j += 30)
               @if($j == 0)
-                <option value="{{$i}}:00">{{$i}}:00</option>
+                <option value="{{ $i }}:00">{{ $i }}:00</option>
               @else
-                <option value="{{$i}}:{{$j}}">{{$i}}:{{$j}}</option>
+                <option value="{{ $i }}:{{ $j }}">{{ $i }}:{{ $j }}</option>
               @endif
             @endfor
           @endfor
         </select>
         <select name="number" class="booking_form_item number" id="number">
-          <option value="1">1人</option>
-          <option value="2">2人</option>
-          <option value="3">3人</option>
-          <option value="4">4人</option>
-          <option value="5">5人</option>
-          <option value="6">6人</option>
+          @for ($k = 1; $k <= 6; $k++) 
+            <option value="{{ $k }}">{{ $k }}人</option>
+          @endfor
         </select>
         <div class="booking_content">
           <table class="booking_content_table">

@@ -39,7 +39,7 @@
                 <select name="booking_time" class="mypage_booking_input" id="currenttime">
                   @for ($i = 10; $i <= 23; $i++) 
                     @for ($j = 0; $j <= 30; $j += 30)
-                    <option value="{{ $i }}:{{ sprintf('%002d', $j) }}" {{ ($booking->booking_time == $i.':'.sprintf('%002d', $j)) ? "selected":""}}>
+                    <option value="{{ $i }}:{{ sprintf('%002d', $j) }}" {{ $booking->booking_time == $i.':'.sprintf('%002d', $j).':00' ? "selected" : "" }}>
                       {{ $i }}:{{ sprintf('%002d', $j) }} 
                     </option>
                     @endfor
@@ -51,36 +51,9 @@
               <th>Number</th>
               <td>
                 <select name="number" class="mypage_booking_input">
-                  @if( $booking->number == 1 )
-                  <option value="1" selected>1人</option>
-                  @else
-                  <option value="1">1人</option>
-                  @endif
-                  @if( $booking->number == 2 )
-                  <option value="2" selected>2人</option>
-                  @else
-                  <option value="2">2人</option>
-                  @endif
-                  @if( $booking->number == 3 )
-                  <option value="3" selected>3人</option>
-                  @else
-                  <option value="3">3人</option>
-                  @endif
-                  @if( $booking->number == 4 )
-                  <option value="4" selected>4人</option>
-                  @else
-                  <option value="4">4人</option>
-                  @endif
-                  @if( $booking->number == 5 )
-                  <option value="5" selected>5人</option>
-                  @else
-                  <option value="5">5人</option>
-                  @endif
-                  @if( $booking->number == 6 )
-                  <option value="6" selected>6人</option>
-                  @else
-                  <option value="6">6人</option>
-                  @endif
+                  @for( $k = 1; $k <= 6; $k++ )
+                  <option value="{{ $k }}" {{ $booking->number == $k ? "selected" : "" }}>{{ $k }}人</option>
+                  @endfor
                 </select>
               </td>
             </tr>
