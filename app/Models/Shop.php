@@ -33,7 +33,6 @@ class Shop extends Model
     public function is_liked_by_auth_user()
     {
         $id = Auth::id();
-
         $fav_users = array();
         
         foreach($this->favorites as $favorite) {

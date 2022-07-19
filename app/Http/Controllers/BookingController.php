@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\BookingRequest;
 
 class BookingController extends Controller
 {
-    public function store(Request $request)
+    public function store(BookingRequest $request)
     {
         Booking::create([
             'shop_id' => $request->shop_id,
@@ -17,7 +18,6 @@ class BookingController extends Controller
             'booking_time' => $request->booking_time,
             'number' => $request->number,
         ]);
-
         return redirect('/done');
     }
     
@@ -27,7 +27,7 @@ class BookingController extends Controller
         return view('done',['id' => $id]);
     }
 
-    public function update(Request $request, $booking_id)
+    public function update(BookingRequest $request, $booking_id)
     {
         $form = $request->all();
         unset($form['_token']);

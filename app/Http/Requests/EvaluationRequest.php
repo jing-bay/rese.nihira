@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BookingRequest extends FormRequest
+class EvaluationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class BookingRequest extends FormRequest
     public function rules()
     {
         return [
-            'booking_date' => 'required|date_format:Y-m-d|after:today',
-            'booking_time' => 'required|date_format:H:i',
-            'number' => 'required|numeric|max:6',
+            'booking_id' => 'required',
+            'evaluation' => 'required|numeric|min:1|max:5',
+            'comment' => 'required|max:300',
         ];
     }
 }

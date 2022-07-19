@@ -15,12 +15,12 @@
         <nav class="header_nav" id="js-nav">
           <ul class="nav_items">
             @guest
-            <li class="nav-items_item"><a href="/">Home</a></li>
-            <li class="nav-items_item"><a href="/register">Registration</a></li>
-            <li class="nav-items_item"><a href="/login">Login</a></li>
+            <li class="nav-items_item menu_item"><a href="/">Home</a></li>
+            <li class="nav-items_item menu_item"><a href="/register">Registration</a></li>
+            <li class="nav-items_item menu_item"><a href="/login">Login</a></li>
             @endguest
             @auth
-            <li class="nav-items_item">
+            <li class="nav-items_item menu_item">
               <a href="/">Home</a>
             </li>
             <li class="nav-items_item">
@@ -29,7 +29,7 @@
                 <input type="submit" class="menu_item_logout" value="Logout">
               </form>
             </li>
-            <li class="nav-items_item">
+            <li class="nav-items_item menu_item">
               <a href="/mypage">Mypage</a>
             </li>
             @endauth

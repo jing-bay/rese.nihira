@@ -23,16 +23,14 @@
       <h1 class="booking_title">予約</h1>
       <form action="/booking" id="booking_form" class="booking_form" method="post">
         @csrf
+        @if ($errors->has('booking_date'))
+          <p class="booking_form_error">{{$errors->first('booking_date')}}</p>
+        @endif
         <input type="date" name="booking_date" class="booking_form_item date" id="tomorrow">
         <select name="booking_time" class="booking_form_item time" id="currenttime">
           @for ($i = 10; $i <= 23; $i++) 
-            @for ($j = 0; $j <= 30; $j += 30)
-              @if($j == 0)
-                <option value="{{ $i }}:00">{{ $i }}:00</option>
-              @else
-                <option value="{{ $i }}:{{ $j }}">{{ $i }}:{{ $j }}</option>
-              @endif
-            @endfor
+            <option value="{{ $i }}:00">{{ $i }}:00</option>
+            <option value="{{ $i }}:30">{{ $i }}:30</option>
           @endfor
         </select>
         <select name="number" class="booking_form_item number" id="number">

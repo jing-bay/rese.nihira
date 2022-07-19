@@ -6,6 +6,8 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\EvaluationController;
+
 
 /*
 Route::get('/', function () {
@@ -32,6 +34,9 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/booking/update/{booking_id}', [BookingController::class, 'update']);
     Route::post('/booking/delete/{booking_id}', [BookingController::class, 'delete']);
     Route::get('/mypage', [MypageController::class, 'index']);
+    Route::post('/evaluation', [EvaluationController::class, 'store']);
+    Route::post('/evaluation/update/{evaluation_id}', [EvaluationController::class, 'update']);
+    Route::post('/evaluation/delete/{evaluation_id}', [EvaluationController::class, 'delete']);
 });
 
 require __DIR__.'/auth.php';

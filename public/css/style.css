@@ -1,9 +1,7 @@
-/*
 * {
-  outline: 1px solid red !important;
+  /*outline: 1px solid red !important;*/
+  box-sizing: border-box;
 }
-*/
-
 
 *:focus {
   outline: none;
@@ -28,8 +26,15 @@ body{
 }
 
 .contents {
-  margin-left: 100px;
-  margin-right: 100px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+@media screen and (max-width:768px) {
+  .contents {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 }
 
 .header{
@@ -40,9 +45,10 @@ body{
 .header_title {
   position: relative;
   color: #305dff;
+  -webkit-text-stroke: 1px #305dff;
   font-size: 30px;
-  font-weight: bolder;
-  left:45px;
+  font-weight: 900;
+  left:25px;
   top: 45px;
   z-index: 1000;
 }
@@ -129,14 +135,18 @@ body{
 }
 
 .nav-items_item{
-  font-size: 24px;
-  color: #305dff;
   margin-top: 30px;
   text-align: center;
+  font-size: 24px;
+  color: #305dff;
+}
+
+.menu_item {
+  -webkit-text-stroke: 1px #305dff;
 }
 
 .menu_item_logout{
-  font-size: 24px;
+  font-size: 26px;
   color: #305dff;
   border: none;
   cursor: pointer;
@@ -152,7 +162,7 @@ body{
   margin: 0 auto;
   background-color: #ffffff;
   border-radius: 5px;
-  width: 30%;
+  width:400px;
   box-shadow: 0px 3px 3px #a1a1a1;
 }
 
@@ -164,7 +174,6 @@ body{
   width: 100%;
   color: #ffffff;
   font-size: 16px;
-  box-sizing: border-box;
   padding-left: 15px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -180,6 +189,7 @@ body{
 
 .login_input {
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .login_input_item{
@@ -187,7 +197,7 @@ body{
   border-left: none;
   border-right: none;
   border-bottom: 1px solid #3b3b3b;
-  width:85%;
+  width:90%;
   font-size: 14px;
 }
 
@@ -220,31 +230,175 @@ body{
   cursor: pointer;
 }
 
+@media screen and (max-width:768px) {
+  .login_card {
+    width: 90%;
+  }
+
+.login_validation {
+  color: #e60033;
+  font-size: 10px;
+  padding-bottom: 10px;
+}
+
+  .login_icn {
+    display: none;
+  }
+}
+
 /*検索フォーム*/
 .search{
+  box-shadow: 0px 3px 3px #a1a1a1;
+  width: 410px;
+  background-color: #ffffff;
+  border-radius: 5px;
   display: flex;
+  margin: 0px 0px 0px auto;
+}
+
+.search_area_wrapper{
   position: relative;
-  justify-content: flex-end;
+}
+
+.search_area_wrapper::after {
+  content: "";
+  border-top: 7px solid #eeeeee;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  position: absolute;
+  top: 23px;
+  left: 70px;
+  pointer-events: none;
+}
+
+.search_category_wrapper {
+  position: relative;
+}
+
+.search_category_wrapper::after {
+  content: "";
+  border-top: 7px solid #eeeeee;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  position: absolute;
+  top: 23px;
+  left: 100px;
+  pointer-events: none;
+}
+
+.search_keyword_wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.search_keyword_wrapper::before {
+  content: "";
+  background: url(../image/search.png) no-repeat center center / auto 100%;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  top: 13px;
+  left: 12px;
 }
 
 .search_form{
-  height: 40px;
-  border: 1px solid #ffffff;
-  width: 30%;
+  height: 35px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .search_form_area {
-  width: 10%;
+  width: 90px;
   cursor: pointer;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #eeeeee;
+  padding-left: 9px;
 }
 
 .search_form_category {
-  width: 10%;
+  width: 120px;
   cursor: pointer;
+  border: 1px solid #ffffff;
+  padding-left: 9px;
 }
 
 .search_form_keyword{
-  width: 300px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+  border-left: 1px solid #eeeeee;
+  padding-left: 40px;
+  width: 100%;
+}
+
+@media screen and (max-width:768px) {
+  .search {
+    display: inherit;
+    width: 80%;
+    margin:70px auto 0px;
+  }
+
+  .search_form{
+    margin: 0px;
+    height: 40px;
+  }
+
+  .search_area_wrapper {
+    position: relative;
+  }
+  
+  .search_area_wrapper::after {
+    content: "";
+    border-top: 10px solid #eeeeee;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    top: 15px;
+    left: 70px;
+  }
+  
+  .search_category_wrapper::after {
+    border-top: 10px solid #eeeeee;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    top: 15px;
+    left: 100px;
+  }
+  
+  .search_keyword_wrapper::before {
+    top: 10px;
+  }
+
+  .search_form_area {
+    width: 100%;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #eeeeee;
+    border-right: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .search_form_category {
+    width: 100%;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #eeeeee;
+    border-right: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+  }
+
+  .search_form_keyword{
+    border-radius: 0px 0px 5px 5px;
+  }
 }
 
 /*一覧ページ*/
@@ -257,13 +411,12 @@ body{
 }
 
 .shop_card {
-  width: 290px;
+  width: 284px;
   height: 280px;
   box-shadow: 0px 3px 10px #a1a1a1;
   background-color: #ffffff;
   border-radius: 5px;
   margin-bottom: 40px;
-  box-sizing: border-box;
 }
 
 .shop_card_img img {
@@ -275,7 +428,6 @@ body{
 
 .shop_card_content {
   padding: 15px;
-  
 }
 
 .card_content_ttl {
@@ -309,6 +461,12 @@ body{
   width: 35px;
 }
 
+@media screen and (max-width:768px) {
+  .shop_card {
+    margin: 0px auto 40px;
+  }
+}
+
 /*詳細ページ*/
 
 .item{
@@ -329,6 +487,8 @@ body{
 .detail_top_title{
   font-size: 28px;
   padding-left: 15px;
+  display: flex;
+  align-items: center;
 }
 
 .detail_img img{
@@ -336,11 +496,11 @@ body{
 }
 
 .detail_tag{
-  padding-top: 30px;
+  padding-top: 2vw;
 }
 
 .detail_overview{
-  padding-top: 30px;
+  padding-top: 2vw;
   line-height: 24px;
 }
 
@@ -376,7 +536,7 @@ body{
 }
 
 .booking{
-  width: 46%;
+  width: 50%;
   height: 600px;
   background-color: #305dff;
   border-radius: 5px;
@@ -386,11 +546,16 @@ body{
 
 .booking_title{
   font-size: 24px;
-  padding-left: 30px;
+  padding-left: 7%;
 }
 
 .booking_form{
   padding-top: 30px;
+}
+
+.booking_form_error{
+  margin-left: 7%;
+  margin-bottom: 5px;
 }
 
 .booking_form_item{
@@ -398,8 +563,9 @@ body{
   border: 1px solid #ffffff;
   border-radius: 5px;
   margin-bottom: 15px;
-  margin-left: 30px;
+  margin-left: 7%;
   cursor: pointer;
+  font-size: clamp(12px, 1.5vw, 14px);
 }
 
 .date{
@@ -408,7 +574,6 @@ body{
 
 .time{
   width: 85%;
-  box-sizing: border-box;
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator {
@@ -417,7 +582,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .number{
   width: 85%;
-  box-sizing: border-box;
 }
 
 .booking_content{
@@ -426,14 +590,14 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   border-radius: 5px;
   padding-top: 20px;
   padding-bottom: 20px;
-  margin-left: 30px;
+  margin-left: 7%;
 }
 
 .booking_content_table{
   text-align: left;
-  margin-left: 30px;
+  margin-left: 7%;
   font-size: 14px;
-  font-weight: 500;
+  width: 85%;
 }
 
 .booking_content_table th{
@@ -445,7 +609,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .booking_content_table td{
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 40px;
+  padding-left: 0.8vw;
+  width: 100%;
 }
 
 .bookbtn{
@@ -457,7 +622,51 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   font-size: 16px;
   border-radius: 0px 0px 5px 5px;
   cursor: pointer;
-  margin-top: 230px;
+  margin-top: 200px;
+}
+
+@media screen and (max-width:768px) {
+  .item {
+    display: inherit;
+  }
+
+  .detail {
+    margin: 20vw auto 0;
+    width: 75%;
+  }
+
+  .detail_top {
+    margin-bottom: 5vw;
+  }
+
+  .detail_top_title {
+    font-size: clamp(24px, 4vw, 28px);
+    min-height: 0vw;
+  }
+
+  .detail_tag {
+    font-size: clamp(14px, 2.5vw, 16px);
+  }
+
+  .detail_overview {
+    font-size: clamp(12px, 2.5vw, 16px);
+    min-height: 0vw;
+  }
+
+  .booking {
+    margin: 5vw auto;
+    width: 75%;
+    height: 400px;
+  }
+
+  .bookbtn {
+    margin-top: 3px;
+    margin-bottom: 20px;
+  }
+
+  .date {
+    width: 85%;
+  }
 }
 
 /*予約完了ページ*/
@@ -466,18 +675,17 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   border: 1px solid #ffffff; 
   border-radius: 5px;
   box-shadow: 3px 3px 3px #a1a1a1;
-  position: relative;
-  top: 100px;
-  width: 40%;
-  margin: 0 auto;
+  margin-top: 100px;
+  width: 400px;
+  height: 300px;
+  margin: 100px auto 0;
   text-align: center;
 }
 
 .thanks_content{
   font-size: 24px;
   font-weight: lighter;
-  padding-top: 100px;
-  padding-bottom: 50px;
+  padding: 100px 10px 50px;
 }
 
 .btn{
@@ -495,10 +703,31 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   margin-bottom: 100px;
 }
 
+@media screen and (max-width:768px) {
+  .thanks {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px #a1a1a1;
+    width: 80%;
+    height: 300px;
+    text-align: center;
+  }
+  
+  .thanks_content {
+    font-size: clamp(18px, 4vw, 24px);
+    padding: 100px 30px 50px;
+  }
+}
+
 /*マイページ*/
 .mypage{
   display: flex;
-  margin-top: 50px;
+  justify-content: space-between;
+}
+
+.mypage_left{
+  width: 48%;
 }
 
 .username {
@@ -507,24 +736,20 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   padding-top: 60px;
 }
 
-.mypage_booking{
-  width: 43vw;
-}
-
-.mypage_booking_ttl {
+.mypage_content_ttl {
   font-size: 24px;
   margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .mypage_booking_card{
   background-color: #305dff;
   border-radius: 5px;
   color: #ffffff;
-  width: 430px;
-  margin-bottom: 10px;
+  width: 100%;
   padding-top: 20px;
   box-shadow: 0px 3px 10px #a1a1a1;
-  box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
 .booking_card_header{
@@ -532,34 +757,41 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   padding-left: 30px;
 }
 
-.clockicn {
+.clockicn{
   width: 30px;
 }
 
-.deleteicn {
+.deleteicn{
   border: none;
   width: 30px;
-  margin-left: 250px;
+  margin-right: 20px;
 }
 
-.deleteicn:hover {
+.deleteicn:hover{
   cursor: pointer;
+}
+
+.evaluation_deleteicn{
+  border: none;
+  width: 30px;
+  margin-left:380px
 }
 
 .booking_card_ttl{
   font-size: 16px;
   padding-left: 25px;
   padding-top: 5px;
+  width: 100%;
 }
 
 .mypage_booking_input{
-  width: 100%;
-  box-sizing: border-box;
+  width: 75%;
   border: 1px solid #ffffff;
   border-radius: 5px;
-  padding: 3px 0px ;
+  padding: 3px 0px;
   height: 30px;
   cursor: pointer;
+  font-size: clamp(12px, 1.5vw, 14px);
 }
 
 .booking_update_btn{
@@ -574,17 +806,105 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   margin-top: 30px;
 }
 
-.mypage_favorite {
-  width: 50%;
+.rate-form {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 }
 
-.mypage_favorite_ttl{
-  font-size: 24px;
-  margin-bottom: 30px;
+.rate-form input{
+  display: none;
+}
+
+.rate-form label {
+  padding: 0 2px;
+  color: #eeeeee;
+  cursor: pointer;
+  font-size: clamp(14px, 2vw, 20px);
+}
+
+.rate-form input:hover~label {
+  color: #ffcc00;
+}
+
+.rate-form input:checked~label {
+  color: #ffcc00;
+}
+
+.mypage_favorite {
+  width: 48%;
+}
+
+.mypage_evaluation {
+  width: 100%;
+}
+
+.mypage_evaluation_th{
+  vertical-align: top;
+}
+
+.mypage_evaluation_comment{
+  resize: none;
+  width: 90%;
+  height: 100px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
 }
 
 .favorite_shop{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+@media screen and (max-width:768px) {
+  .mypage {
+    display: inherit;
+  }
+
+  .username {
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+    font-size: clamp(24px, 4vw, 30px);
+  }
+
+  .mypage_content_ttl{
+    font-size: clamp(20px, 4vw, 24px);
+  }
+
+  .mypage_left {
+    width: 90%;
+    margin: 0px auto;
+  }
+
+  .mypage_booking_card {
+    width: 100%;
+  }
+
+  .mypage_booking {
+    width: 100%;
+  }
+
+  .mypage_favorite {
+    width: 90%;
+    margin: 0px auto;
+  }
+
+  .mypage_evaluation {
+    width: 100%;
+    vertical-align: top;
+  }
+
+  .mypage_booking_input {
+    font-size: clamp(12px, 3vw, 14px);
+    width: 90%;
+  }
+
+  .rate-form label {
+    padding: 0 2px;
+    color: #eeeeee;
+    cursor: pointer;
+    font-size: clamp(14px, 3vw, 20px);
+  }
 }

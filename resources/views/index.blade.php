@@ -2,31 +2,37 @@
 @section('content')
 
   <form action="/search" class ="search" method="get">
-    <select name="search_area" class="search_form search_form_area" id="search_area" onchange="submit(this.form)">
-      <option value="">All areas</option>
-      @foreach ($areas as $area)
-      @if(!empty($search_area) && $search_area == $area->id)
-        <option value = "{{ $area->id }}" selected>{{ $area->name }}</option>
-      @else
-        <option value="{{ $area->id }}">{{ $area->name }}</option>
-      @endif
-      @endforeach
-    </select>
-    <select name="search_category" class="search_form search_form_category" id="search_category" onchange="submit(this.form)">
-      <option value="">All categories</option>
-      @foreach ($categories as $category)
-      @if(!empty($search_category) && $search_category == $category->id)
-        <option value = "{{ $category->id }}" selected>{{ $category->name }}</option>
+    <div class="search_area_wrapper">
+      <select name="search_area" class="search_form search_form_area" id="search_area" onchange="submit(this.form)">
+        <option value="">All areas</option>
+        @foreach ($areas as $area)
+        @if(!empty($search_area) && $search_area == $area->id)
+          <option value = "{{ $area->id }}" selected>{{ $area->name }}</option>
         @else
-        <option value="{{ $category->id }}" >{{ $category->name }}</option>
+          <option value="{{ $area->id }}">{{ $area->name }}</option>
+        @endif
+        @endforeach
+      </select>
+    </div>
+    <div class="search_category_wrapper">
+      <select name="search_category" class="search_form search_form_category" id="search_category" onchange="submit(this.form)">
+        <option value="">All categories</option>
+        @foreach ($categories as $category)
+        @if(!empty($search_category) && $search_category == $category->id)
+          <option value = "{{ $category->id }}" selected>{{ $category->name }}</option>
+          @else
+          <option value="{{ $category->id }}" >{{ $category->name }}</option>
+        @endif
+        @endforeach
+      </select>
+    </div>
+    <div class="search_keyword_wrapper">
+      @if(!empty($search_keyword))
+      <input type="search" value="{{$search_keyword}}" name="search_keyword" class="search_form search_form_keyword" placeholder="Search ..." id="search_keyword" onchange="submit(this.form)">
+      @else
+      <input type="search" name="search_keyword" class="search_form search_form_keyword" placeholder="Search ..." id="search_keyword" onchange="submit(this.form)">
       @endif
-      @endforeach
-    </select>
-    @if(!empty($search_keyword))
-    <input type="search" value="{{$search_keyword}}" name="search_keyword" class="search_form search_form_keyword" placeholder="Search ..." id="search_keyword" onchange="submit(this.form)">
-    @else
-    <input type="search" name="search_keyword" class="search_form search_form_keyword" placeholder="Search ..." id="search_keyword" onchange="submit(this.form)">
-    @endif
+    </div>
   </form>
 
   <div class="shop">

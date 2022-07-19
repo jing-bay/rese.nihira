@@ -36,7 +36,7 @@ Herokuデプロイ_URL： https://aqueous-wildwood-93146.herokuapp.com/
 
 ## 5.使用技術、バージョン
 - フロントエンド
-  - HTML / CSS
+  - HTML / CSS / JavaScript 
   - jQuery 3.5.1
 
 - バックエンド
