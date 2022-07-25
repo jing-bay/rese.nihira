@@ -7,18 +7,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\EvaluationController;
-
-
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-*/
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Route::get('/thanks', [ThanksController::class, 'index']);
 
@@ -27,6 +16,10 @@ Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 Route::get('/search', [ShopController::class, 'search']);
 
 Route::middleware(['auth'])->group(function(){
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+        })->name('verification.notice');
+    
     Route::post('/favorites', [FavoriteController::class, 'store']);
     Route::post('/favorites/delete/{favorite_id}', [FavoriteController::class, 'delete']);
     Route::post('/booking', [BookingController::class, 'store']);
@@ -38,6 +31,11 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/evaluation/update/{evaluation_id}', [EvaluationController::class, 'update']);
     Route::post('/evaluation/delete/{evaluation_id}', [EvaluationController::class, 'delete']);
 });
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/home');
+    })->middleware(['auth', 'signed'])->name('verification.verify');
 
 require __DIR__.'/auth.php';
 

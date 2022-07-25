@@ -26,7 +26,7 @@ class BookingRequest extends FormRequest
         return [
             'booking_date' => 'required|date_format:Y-m-d|after:today',
             'booking_time' => 'required|date_format:H:i',
-            'number' => 'required|numeric|max:6',
+            'number' => 'required|integer|max:6',
         ];
     }
 }

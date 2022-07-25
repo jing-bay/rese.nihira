@@ -28,7 +28,7 @@
     </div>
     <div class="search_keyword_wrapper">
       @if(!empty($search_keyword))
-      <input type="search" value="{{$search_keyword}}" name="search_keyword" class="search_form search_form_keyword" placeholder="Search ..." id="search_keyword" onchange="submit(this.form)">
+      <input type="search" value="{{ $search_keyword }}" name="search_keyword" class="search_form search_form_keyword" placeholder="Search ..." id="search_keyword" onchange="submit(this.form)">
       @else
       <input type="search" name="search_keyword" class="search_form search_form_keyword" placeholder="Search ..." id="search_keyword" onchange="submit(this.form)">
       @endif
@@ -39,7 +39,7 @@
   @foreach ($shops as $shop)
     <div class="shop_card">
       <div class="shop_card_img">
-        <img src="{{ $shop->url }}" alt="店舗画像">
+        <img src="{{ asset('storage/shopimg/' . $shop->url) }}" alt="店舗画像">
       </div>
       <div class="shop_card_content">
         <div class="card_content_ttl">
@@ -61,13 +61,13 @@
             @foreach($favorites as $favorite)
               @if($favorite->shop_id == $shop->id)
               <form action="/favorites/delete/{{ $favorite->id }}" method="post" class="card_content_fav">
-                <input type="image" src="{{ asset('image/fav.png')}}" class="fav_btn">
+                <input type="image" src="{{ asset('image/fav.png') }}" class="fav_btn">
               @endif
             @endforeach
           @else
           <form action="/favorites" method="post" class="card_content_fav">
             <input type="hidden" value="{{ $shop->id }}" name="shop_id">
-            <input type="image" src="{{ asset('image/unfav.png')}}" class="fav_btn">
+            <input type="image" src="{{ asset('image/unfav.png') }}" class="fav_btn">
           @endif    
           @csrf
           </form>

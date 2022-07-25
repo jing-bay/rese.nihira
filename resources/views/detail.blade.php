@@ -10,7 +10,7 @@
         <h1 class="detail_top_title">{{ $shop->name }}</h1>
       </div>
       <div class="detail_img">
-        <img src="{{ $shop->url}}" alt="店内画像">
+        <img src="{{ asset('storage/shopimg/' . $shop->url) }}" alt="店内画像">
       </div>
       <div class="detail_tag">
         #{{ $shop->area->name }} #{{ $shop->category->name }}
@@ -24,7 +24,7 @@
       <form action="/booking" id="booking_form" class="booking_form" method="post">
         @csrf
         @if ($errors->has('booking_date'))
-          <p class="booking_form_error">{{$errors->first('booking_date')}}</p>
+          <p class="booking_form_error">{{ $errors->first('booking_date') }}</p>
         @endif
         <input type="date" name="booking_date" class="booking_form_item date" id="tomorrow">
         <select name="booking_time" class="booking_form_item time" id="currenttime">

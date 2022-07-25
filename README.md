@@ -50,60 +50,38 @@ Herokuデプロイ_URL： https://aqueous-wildwood-93146.herokuapp.com/
   - draw.io
 
 ## 6.環境構築手順
-1. Gitがインストールされていなければ、Gitをインストール
-2. Herokuのアカウントがない場合、こちらから会員登録→https://signup.heroku.com/
-3. Heroku CLIをインストール
-  - macの場合：ターミナルで以下のコマンドを実行
-```
-$ brew tap heroku/brew && brew install heroku
-```
-  - Windowsの場合：https://devcenter.heroku.com/ja/articles/heroku-cli
-    からインストーラをダウンロード
-4. Githubからダウンロード
-```
-$ git clone https://github.com/jing-bay/rese.nihira.git
-```
-5. 上記のフォルダ内で下記のコマンドを実行
-```
-$ heroku login
-```
-6. Gitリポジトリを初期化
-```
-＄ git init
-```
-7. herokuコマンドでアプリケーション作成
-```
-＄ heroku create
-```
-8. laravel暗号化キーを設定
-```
-php artisan key:generate --show
-```
-上記で確認できたものをxxxxに入力する
-```
-heroku config:set APP_KEY=base64:xxxx
-```
-9. herokuへデプロイ
-```
-git add -A
-git commit -m "message"
-git push heroku main
-```
-10. Jawsdbをアドオンし、設定する
-```
-heroku addons:create jawsdb
-$ heroku config | grep JAWSDB_URL
-> JAWSDB_URL: mysql://<username>:<password>@<host>/<database>
-heroku config:set DATABASE_URL='mysql2://<username>:<password>@<host>/<database>?reconnect=true'
-```
-11.マイグレーションする
-```
-$heroku run php artisan migrate
-```
-12.herokuを開く
-```
-$heroku open
-```
+
+1. venderディレクトリは管理対象外なので、改めてinstallする
+（composerをダウンロードしていない場合は先にしておくこと）
+`$ composer install`
+
+2. .envを作る
+`$ copy .env`
+
+3. .envのAPP_KEYを作る
+`$ php artisan key:generate`
+
+4. .envのAPP_URLを変更
+ローカルの場合はポート番号も含める
+APP_URL=http://localhost:8000
+
+5. MySQLなどににログインしてDBとユーザーを作る(phpMyAdminなどで)
+DB名：resedb
+
+6. .envにDB情報を記載する
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=resedb
+DB_USERNAME=root
+DB_PASSWORD=root
+
+7. DBのテーブルを作り、シーディングする
+`$ php artisan migrate`
+`$ php artisan db:seed`
+
+8. ファイルの中でサーバーを立ち上げる
+`$ php artisan serve`
 
 ## 7.機能一覧
 - ユーザー登録関連
@@ -115,22 +93,22 @@ $heroku open
   - 飲食店検索機能（エリア・ジャンル・キーワード）
 - マイページ関連
   - 飲食店お気に入り登録・削除
-  - 飲食店予約情報追加・削除
-  - 評価機能追加・削除
+  - 飲食店予約情報追加・変更・削除
+  - 評価機能追加・変更・削除
 - マイページ関連
   - 飲食店お気に入り登録・削除
   - 飲食店予約情報追加・変更・削除
   - 評価機能追加・削除
 
 ## ８.工夫したところ
-競合アプリケーションは機能や画面が複雑で使いづらいため、シンプルにした・
+競合アプリケーションは機能や画面が複雑で使いづらいため、シンプルにした。
 
 ## 9.苦労した点
-herokuへのマイグレーションがなかなかうまくいかないこと
+herokuへのマイグレーションがなかなかうまくいかなかったこと。
 
 ## 10.DB設計
 ### ER図
-![ER drawio](https://user-images.githubusercontent.com/95161114/177180255-e99cd710-aaf2-44d2-be44-a4a2641c85bc.png)
+![](ER.drawio.svg)
 
 ### テーブル設定
 #### usersテーブル
@@ -153,9 +131,9 @@ herokuへのマイグレーションがなかなかうまくいかないこと
 |  カラム名  |  属性  |  役割  |
 | ---- | ---- | ---- |
 |  id  |  unsigned bigint/PRIMARY KEY/NOT NULL  |  飲食店を識別するID |
+|  name  |  varchar(255)/NOT NULL  |  店名 |
 |  area_id  |  unsigned bigint/NOT NULL  |  地域を識別するID |
 |  category_id  |  unsigned bigint/NOT NULL  |  ジャンルを識別するID |
-|  name  |  varchar(255)/NOT NULL  |  店名 |
 |  overview  |  text/NOT NULL  |  概要 |
 |  url  |  varchar(255)/NOT NULL  |  お店のURL |
 |  created_at  |  timestamp  |  作成日時 |
@@ -199,5 +177,16 @@ herokuへのマイグレーションがなかなかうまくいかないこと
 |  id  |  unsigned bigint/PRIMARY KEY/NOT NULL  |  お気に入り情報を識別するID  |
 |  shop_id  |  unsigned bigint/NOT NULL  |  飲食店を識別するID  |
 |  user_id  |  unsigned bigint/NOT NULL  |  ユーザーを識別するID  |
+|  created_at  |  timestamp  |  作成日時  |
+|  updated_at  |  timestamp  |  更新日時  |
+
+####  evaluationsテーブル
+評価を管理する。評価は予約した店舗に行った後のみ行える
+|  カラム名  |  属性  |  役割  |
+| ---- | ---- | ---- |
+|  id  |  unsigned bigint/PRIMARY KEY/NOT NULL  |  評価情報を識別するID  |
+|  booking_id  |  unsigned bigint/NOT NULL  |  予約情報を識別するID  |
+|  evaluation  |  unsigned tinyint/NOT NULL  |  5段階評価  |
+|  comment  |  text/NOT NULL  |  コメント  |
 |  created_at  |  timestamp  |  作成日時  |
 |  updated_at  |  timestamp  |  更新日時  |

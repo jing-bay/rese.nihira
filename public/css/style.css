@@ -622,7 +622,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   font-size: 16px;
   border-radius: 0px 0px 5px 5px;
   cursor: pointer;
-  margin-top: 200px;
+  margin-top: 170px;
 }
 
 @media screen and (max-width:768px) {

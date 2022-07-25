@@ -25,7 +25,7 @@ class EvaluationRequest extends FormRequest
     {
         return [
             'booking_id' => 'required',
-            'evaluation' => 'required|numeric|min:1|max:5',
+            'evaluation' => 'required|integer|min:1|max:5',
             'comment' => 'required|max:300',
         ];
     }
