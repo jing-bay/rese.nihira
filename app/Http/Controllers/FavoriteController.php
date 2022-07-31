@@ -20,7 +20,6 @@ class FavoriteController extends Controller
     public function delete($favorite_id)
     {
         Favorite::find($favorite_id)->delete();
-
         return back();
     }
 }
