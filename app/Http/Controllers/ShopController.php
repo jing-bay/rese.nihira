@@ -20,7 +20,7 @@ class ShopController extends Controller
         $id = Auth::id();
         $favorites = Favorite::where('user_id', $id)->get();
 
-        return view('index', ['shops' => $shops, 'areas' => $areas, 'categories' => $categories, 'favorites' => $favorites, 'id'=>$id]);
+        return view('index', compact('shops', 'areas', 'categories', 'favorites', 'id'));
     }
 
     public function detail($shop_id) 
@@ -28,7 +28,7 @@ class ShopController extends Controller
         $shop = Shop::find($shop_id);
         $id = Auth::id();
 
-        return view('detail', ['shop' => $shop, 'id' => $id]);
+        return view('detail', compact('shop', 'id'));
     }
 
     public function search(Request $request) 
@@ -52,7 +52,6 @@ class ShopController extends Controller
         $shops = $query->get();
         $areas = Area::all();
         $categories = Category::all();
-
         $id = Auth::id();
         $favorites = Favorite::where('user_id', $id)->get();
 

@@ -20,6 +20,6 @@ class MypageController extends Controller
         $bookings = Booking::where('user_id', $id)->where('booking_date', '>=', $today)->orderBy('id', 'asc')->get();
         $evaluations = Booking::where('user_id', $id)->where('booking_date', '<', $today)->orderBy('id', 'asc')->get();
 
-        return view('mypage', ['favorites' => $favorites, 'bookings' => $bookings, 'user' => $user, 'id' => $id, 'evaluations' => $evaluations]);
+        return view('mypage', compact('favorites', 'bookings', 'user', 'id', 'evaluations'));
     }
 }

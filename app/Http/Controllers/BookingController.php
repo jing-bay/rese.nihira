@@ -24,7 +24,7 @@ class BookingController extends Controller
     public function done()
     {
         $id = Auth::id();
-        return view('done',['id' => $id]);
+        return view('done',compact('id'));
     }
 
     public function update(BookingRequest $request, $booking_id)
