@@ -40,15 +40,11 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
 ## 5.使用技術、バージョン
 
 -   フロントエンド
-
     -   HTML / CSS / JavaScript
     -   jQuery 3.5.1
-
 -   バックエンド
-
     -   PHP 8.1.7
     -   Laravel 8.83.12
-
 -   インフラ・その他
     -   MySQL 5.7.34
     -   Heroku
@@ -58,41 +54,56 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
 ## 6.環境構築手順
 
 1. vender ディレクトリは管理対象外なので、改めて install する
+
    （composer をダウンロードしていない場合は先にしておくこと）
+
    `$ composer install`
 
 2. .env を作る
+
    `$ copy .env`
 
 3. .env の APP_KEY を作る
+
    `$ php artisan key:generate`
 
 4. .env の APP_URL を変更
+
    ローカルの場合はポート番号も含める
+
    APP_URL=http://localhost:8000
 
 5. MySQL などににログインして DB とユーザーを作る(phpMyAdmin などで)
+
    DB 名：resedb
 
 6. .env に DB 情報を記載する
+
    DB_CONNECTION=mysql
+
    DB_HOST=127.0.0.1
+
    DB_PORT=3306
+
    DB_DATABASE=resedb
+
    DB_USERNAME=root
+
    DB_PASSWORD=root
 
 7. DB のテーブルを作り、シーディングする
+
    `$ php artisan migrate`
+
    `$ php artisan db:seed`
 
 8. ファイルの中でサーバーを立ち上げる
+
    `$ php artisan serve`
 
 ## 7.機能一覧
 
 -   ユーザー登録関連
-    -
     -   ログイン・ログアウト
 -   飲食店表示関連
     -   飲食店一覧取得
@@ -119,7 +130,7 @@ heroku へのマイグレーションがなかなかうまくいかなかった�
 
 ### ER 図
 
-![](ER.drawio.svg)
+![](ER.drawio.png)
 
 ### テーブル設定
 
