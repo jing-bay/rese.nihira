@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    protected $fillable = ['shop_id','user_id','booking_date','booking_time','number'];
+    protected $fillable = ['shop_id', 'user_id', 'booking_date', 'booking_time', 'number'];
 
     public function shop()
     {
@@ -23,5 +23,4 @@ class Booking extends Model
     {
         return $this->hasOne(Evaluation::class);
     }
-
 }

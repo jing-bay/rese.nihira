@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Evaluation extends Model
 {
-    protected $fillable = ['booking_id','evaluation','comment'];
+    protected $fillable = ['booking_id', 'evaluation', 'comment'];
 
     public function booking()
     {

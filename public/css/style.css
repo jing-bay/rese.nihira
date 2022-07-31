@@ -1,5 +1,4 @@
 * {
-  /*outline: 1px solid red !important;*/
   box-sizing: border-box;
 }
 
@@ -7,7 +6,7 @@
   outline: none;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
@@ -21,7 +20,7 @@ input {
   outline: none;
 }
 
-body{
+body {
   background-color: #eeeeee;
 }
 
@@ -37,7 +36,7 @@ body{
   }
 }
 
-.header{
+.header {
   display: flex;
 }
 
@@ -113,7 +112,7 @@ body{
 }
 
 /*メニュー*/
-.header_nav{
+.header_nav {
   display: none;
 }
 
@@ -134,7 +133,7 @@ body{
   padding: 0;
 }
 
-.nav-items_item{
+.nav-items_item {
   margin-top: 30px;
   text-align: center;
   font-size: 24px;
@@ -145,7 +144,7 @@ body{
   -webkit-text-stroke: 1px #305dff;
 }
 
-.menu_item_logout{
+.menu_item_logout {
   font-size: 26px;
   color: #305dff;
   border: none;
@@ -154,11 +153,11 @@ body{
 }
 
 /*登録画面*/
-.login{
+.login {
   margin-top: 150px;
 }
 
-.login_card{
+.login_card {
   margin: 0 auto;
   background-color: #ffffff;
   border-radius: 5px;
@@ -166,7 +165,7 @@ body{
   box-shadow: 0px 3px 3px #a1a1a1;
 }
 
-.login_header{
+.login_header {
   background-color: #305dff;
   border: 1px solid #305dff;
   border-top-left-radius: 5px;
@@ -179,7 +178,7 @@ body{
   padding-bottom: 20px;
 }
 
-.login_content{
+.login_content {
   padding: 0px 30px 20px;
 }
 
@@ -192,7 +191,7 @@ body{
   text-align: center;
 }
 
-.login_input_item{
+.login_input_item {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -201,24 +200,24 @@ body{
   font-size: 14px;
 }
 
-.login_validation{
+.login_validation {
   color: #e60033;
   font-size: 12px;
 }
 
-.login_icn{
+.login_icn {
   width: 24px;
   position: relative;
   top: 6px;
 }
 
-.login_btn{
+.login_btn {
   text-align: right;
   position: relative;
   right: 10px;
 }
 
-.login_btn_item{
+.login_btn_item {
   display: inline-block;
   background-color: #305dff;
   border: 1px solid #305dff;
@@ -247,7 +246,7 @@ body{
 }
 
 /*検索フォーム*/
-.search{
+.search {
   box-shadow: 0px 3px 3px #a1a1a1;
   width: 410px;
   background-color: #ffffff;
@@ -256,7 +255,7 @@ body{
   margin: 0px 0px 0px auto;
 }
 
-.search_area_wrapper{
+.search_area_wrapper {
   position: relative;
 }
 
@@ -305,7 +304,7 @@ body{
   left: 12px;
 }
 
-.search_form{
+.search_form {
   height: 35px;
   margin-top: 7px;
   margin-bottom: 7px;
@@ -331,7 +330,7 @@ body{
   padding-left: 9px;
 }
 
-.search_form_keyword{
+.search_form_keyword {
   border-top: 1px solid #ffffff;
   border-bottom: 1px solid #ffffff;
   border-right: 1px solid #ffffff;
@@ -396,7 +395,7 @@ body{
     border-left: 1px solid #ffffff;
   }
 
-  .search_form_keyword{
+  .search_form_keyword {
     border-radius: 0px 0px 5px 5px;
   }
 }
@@ -469,42 +468,42 @@ body{
 
 /*詳細ページ*/
 
-.item{
+.item {
   display: flex;
   justify-content: space-between;
 }
 
-.detail{
+.detail {
   margin-top: 100px;
   width: 46%;
 }
 
-.detail_top{
+.detail_top {
   display: flex;
   margin-bottom: 30px;
 }
 
-.detail_top_title{
+.detail_top_title {
   font-size: 28px;
   padding-left: 15px;
   display: flex;
   align-items: center;
 }
 
-.detail_img img{
+.detail_img img {
   width: 100%;
 }
 
-.detail_tag{
+.detail_tag {
   padding-top: 2vw;
 }
 
-.detail_overview{
+.detail_overview {
   padding-top: 2vw;
   line-height: 24px;
 }
 
-.detail_top_backbtn{
+.detail_top_backbtn {
   position: relative;
   background: #ffffff;
   cursor: pointer;
@@ -514,7 +513,7 @@ body{
   box-shadow: 3px 3px 3px #a1a1a1;
 }
 
-.detail_top_backbtn span{
+.detail_top_backbtn span {
   display: inline-block;
   position: absolute;
   left: 8px;
@@ -535,7 +534,7 @@ body{
   transform: rotate(30deg) translateY(-1px);
 }
 
-.booking{
+.booking {
   width: 50%;
   height: 600px;
   background-color: #305dff;
@@ -544,21 +543,21 @@ body{
   color: #ffffff;
 }
 
-.booking_title{
+.booking_title {
   font-size: 24px;
   padding-left: 7%;
 }
 
-.booking_form{
+.booking_form {
   padding-top: 30px;
 }
 
-.booking_form_error{
+.booking_form_error {
   margin-left: 7%;
   margin-bottom: 5px;
 }
 
-.booking_form_item{
+.booking_form_item {
   height: 30px;
   border: 1px solid #ffffff;
   border-radius: 5px;
@@ -568,11 +567,11 @@ body{
   font-size: clamp(12px, 1.5vw, 14px);
 }
 
-.date{
+.date {
   width: 50%;
 }
 
-.time{
+.time {
   width: 85%;
 }
 
@@ -580,11 +579,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   display: none;
 }
 
-.number{
+.number {
   width: 85%;
 }
 
-.booking_content{
+.booking_content {
   background-color: #4d7fff;
   width: 85%;
   border-radius: 5px;
@@ -593,27 +592,27 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   margin-left: 7%;
 }
 
-.booking_content_table{
+.booking_content_table {
   text-align: left;
   margin-left: 7%;
   font-size: 14px;
   width: 85%;
 }
 
-.booking_content_table th{
+.booking_content_table th {
   padding-top: 10px;
   padding-bottom: 10px;
   font-weight: 500;
 }
 
-.booking_content_table td{
+.booking_content_table td {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 0.8vw;
   width: 100%;
 }
 
-.bookbtn{
+.bookbtn {
   background-color: #0538ff;
   width: 100%;
   color: #ffffff;
@@ -656,11 +655,15 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   .booking {
     margin: 5vw auto;
     width: 75%;
-    height: 400px;
+    height: 450px;
+  }
+
+  .booking_form_error {
+    font-size: clamp(10px, 2.5vw, 16px);
   }
 
   .bookbtn {
-    margin-top: 3px;
+    margin-top: 10px;
     margin-bottom: 20px;
   }
 
@@ -670,7 +673,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 /*予約完了ページ*/
-.thanks{
+.thanks {
   background-color: #ffffff;
   border: 1px solid #ffffff; 
   border-radius: 5px;
@@ -682,13 +685,13 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   text-align: center;
 }
 
-.thanks_content{
+.thanks_content {
   font-size: 24px;
   font-weight: lighter;
   padding: 100px 10px 50px;
 }
 
-.btn{
+.btn {
   display: inline-block;
   background-color: #305dff;
   border: 1px solid #305dff;
@@ -699,7 +702,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   padding: 10px 15px;
 }
 
-.backbtn{
+.backbtn {
   margin-bottom: 100px;
 }
 
@@ -721,12 +724,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 /*マイページ*/
-.mypage{
+.mypage {
   display: flex;
   justify-content: space-between;
 }
 
-.mypage_left{
+.mypage_left {
   width: 48%;
 }
 
@@ -742,7 +745,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   margin-top: 30px;
 }
 
-.mypage_booking_card{
+.mypage_booking_card {
   background-color: #305dff;
   border-radius: 5px;
   color: #ffffff;
@@ -752,39 +755,39 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   margin-bottom: 20px;
 }
 
-.booking_card_header{
+.booking_card_header {
   display: flex;
   padding-left: 30px;
 }
 
-.clockicn{
+.clockicn {
   width: 30px;
 }
 
-.deleteicn{
+.deleteicn {
   border: none;
   width: 30px;
   margin-right: 20px;
 }
 
-.deleteicn:hover{
+.deleteicn:hover {
   cursor: pointer;
 }
 
-.evaluation_deleteicn{
+.evaluation_deleteicn {
   border: none;
   width: 30px;
   margin-left:380px
 }
 
-.booking_card_ttl{
+.booking_card_ttl {
   font-size: 16px;
   padding-left: 25px;
   padding-top: 5px;
   width: 100%;
 }
 
-.mypage_booking_input{
+.mypage_booking_input {
   width: 75%;
   border: 1px solid #ffffff;
   border-radius: 5px;
@@ -794,7 +797,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   font-size: clamp(12px, 1.5vw, 14px);
 }
 
-.booking_update_btn{
+.booking_update_btn {
   background-color: #0538ff;
   width: 100%;
   color: #ffffff;
@@ -812,7 +815,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   justify-content: flex-end;
 }
 
-.rate-form input{
+.rate-form input {
   display: none;
 }
 
@@ -839,11 +842,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   width: 100%;
 }
 
-.mypage_evaluation_th{
+.mypage_evaluation_th {
   vertical-align: top;
 }
 
-.mypage_evaluation_comment{
+.mypage_evaluation_comment {
   resize: none;
   width: 90%;
   height: 100px;
@@ -851,10 +854,15 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   border-radius: 5px;
 }
 
-.favorite_shop{
+.favorite_shop {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.mypage_validation {
+  padding-bottom: 10px;
+  color: #e60033;
 }
 
 @media screen and (max-width:768px) {
@@ -906,5 +914,9 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     color: #eeeeee;
     cursor: pointer;
     font-size: clamp(14px, 3vw, 20px);
+  }
+
+  .mypage_validation {
+    font-size: clamp(14px, 2.5vw, 16px);
   }
 }

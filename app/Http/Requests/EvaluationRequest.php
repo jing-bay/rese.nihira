@@ -29,4 +29,13 @@ class EvaluationRequest extends FormRequest
             'comment' => 'required|max:300',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'evaluation.required' => '評価が未入力です',
+            'comment.required' => 'コメントが未入力です',
+            'comment.max' => '300字以内で記入してください',
+        ];
+    }
 }

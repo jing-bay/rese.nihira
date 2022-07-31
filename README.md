@@ -160,7 +160,7 @@ heroku へのマイグレーションがなかなかうまくいかなかった�
 | area_id     | unsigned bigint/NOT NULL             | 地域を識別する ID     |
 | category_id | unsigned bigint/NOT NULL             | ジャンルを識別する ID |
 | overview    | text/NOT NULL                        | 概要                  |
-| url         | varchar(255)/NOT NULL                | お店の URL            |
+| shopimg     | varchar(255)/NOT NULL                | お店の画像            |
 | created_at  | timestamp                            | 作成日時              |
 | updated_at  | timestamp                            | 更新日時              |
 

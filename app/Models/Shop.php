@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Shop extends Model
 {
-    protected $fillable = ['name','area_id','category_id','overview','url'];
+    protected $fillable = ['name', 'area_id', 'category_id', 'overview', 'shopimg'];
     
     public function area()
     {

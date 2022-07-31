@@ -15,7 +15,7 @@ Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 Route::get('/search', [ShopController::class, 'search']);
 
-Route::middleware(['auth','verified'])->group(function(){
+Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/email/verify', function () {
         return view('auth.verify-email');
     })->name('verification.notice');

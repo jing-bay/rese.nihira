@@ -29,4 +29,11 @@ class BookingRequest extends FormRequest
             'number' => 'required|integer|max:6',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'booking_date.after' => '明日以降の日付を入力してください',
+        ];
+    }
 }

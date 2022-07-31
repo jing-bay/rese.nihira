@@ -19,7 +19,7 @@ class CreateShopsTable extends Migration
             $table->foreignId('area_id')->constrained();
             $table->foreignId('category_id')->constrained();
             $table->text('overview');
-            $table->string('url');
+            $table->string('shopimg');
             $table->timestamps();
         });
     }
