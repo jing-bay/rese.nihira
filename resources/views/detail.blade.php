@@ -10,7 +10,7 @@
       <h1 class="detail_top_title">{{ $shop->name }}</h1>
     </div>
     <div class="detail_img">
-      <img src="{{ asset('storage/shopimg/' . $shop->shopimg) }}" alt="店内画像">
+      <img src="{{ asset('shopimg/' . $shop->shopimg) }}" alt="店内画像">
     </div>
     <div class="detail_tag">
       #{{ $shop->area->name }} #{{ $shop->category->name }}

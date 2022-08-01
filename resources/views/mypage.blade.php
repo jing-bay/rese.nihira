@@ -163,7 +163,7 @@
       @foreach ($favorites as $favorite)
       <div class="shop_card">
         <div class="shop_card_img">
-          <img src="{{ asset('storage/shopimg/' . $favorite->shop->shopimg) }}" alt="店舗画像">
+          <img src="{{ asset('shopimg/' . $favorite->shop->shopimg) }}" alt="店舗画像">
         </div>
         <div class="shop_card_content">
           <div class="card_content_ttl">
