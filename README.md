@@ -67,17 +67,21 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
 
    `$ php artisan key:generate`
 
-4. .env の APP_URL を変更
+4. .env の APP_NAME を変更
+
+   APP_NAME = RESE
+
+5. .env の APP_URL を変更
 
    ローカルの場合はポート番号も含める
 
    APP_URL=http://localhost:8000
 
-5. MySQL などににログインして DB とユーザーを作る(phpMyAdmin などで)
+6. MySQL などににログインしてDBを作る
 
    DB 名：resedb
 
-6. .env に DB 情報を記載する
+7. .env に DB 情報を記載する
 
    DB_CONNECTION=mysql
 
@@ -90,14 +94,16 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
    DB_USERNAME=root
 
    DB_PASSWORD=root
+   
+   ※今回認証機能はMailtrapの使用を想定しています。適宜Mailtrapのアカウントを登録し、.envを変更してください。
 
-7. DB のテーブルを作り、シーディングする
+8. DB のテーブルを作り、シーディングする
 
    `$ php artisan migrate`
 
    `$ php artisan db:seed`
 
-8. ファイルの中でサーバーを立ち上げる
+9. ファイルの中でサーバーを立ち上げる
 
    `$ php artisan serve`
 
@@ -105,14 +111,11 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
 
 -   ユーザー登録関連
     -   ログイン・ログアウト
+    -   会員登録の際メール認証する
 -   飲食店表示関連
     -   飲食店一覧取得
     -   飲食店詳細取得
     -   飲食店検索機能（エリア・ジャンル・キーワード）
--   マイページ関連
-    -   飲食店お気に入り登録・削除
-    -   飲食店予約情報追加・変更・削除
-    -   評価機能追加・変更・削除
 -   マイページ関連
     -   飲食店お気に入り登録・削除
     -   飲食店予約情報追加・変更・削除
