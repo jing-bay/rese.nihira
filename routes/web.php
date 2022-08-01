@@ -15,6 +15,10 @@ Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 Route::get('/search', [ShopController::class, 'search']);
 
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+    })->middleware('auth')->name('verification.notice');
+
 Route::middleware(['auth', 'verified'])->group(function (){
     Route::post('/favorites', [FavoriteController::class, 'store']);
     Route::post('/favorites/delete/{favorite_id}', [FavoriteController::class, 'delete']);
