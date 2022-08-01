@@ -8,6 +8,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\EvaluationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 Route::get('/thanks', [ThanksController::class, 'index']);
 
@@ -17,7 +18,12 @@ Route::get('/search', [ShopController::class, 'search']);
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
-    })->middleware('auth')->name('verification.notice');
+})->middleware('auth')->name('verification.notice');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::middleware(['auth', 'verified'])->group(function (){
     Route::post('/favorites', [FavoriteController::class, 'store']);
