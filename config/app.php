@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => app('Rese')->config('app.name'),
+    'name' => app('app_name')->config('app.name'),
 
     /*
     |--------------------------------------------------------------------------
