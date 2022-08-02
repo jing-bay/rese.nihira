@@ -809,6 +809,32 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   margin-top: 30px;
 }
 
+.mypage_favorite {
+  width: 48%;
+}
+
+.favorite_shop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.mypage_evaluation {
+  width: 100%;
+}
+
+.mypage_evaluation_th {
+  vertical-align: top;
+}
+
+.mypage_evaluation_comment {
+  resize: none;
+  width: 90%;
+  height: 100px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
 .rate-form {
   display: flex;
   flex-direction: row-reverse;
@@ -832,32 +858,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .rate-form input:checked~label {
   color: #ffcc00;
-}
-
-.mypage_favorite {
-  width: 48%;
-}
-
-.mypage_evaluation {
-  width: 100%;
-}
-
-.mypage_evaluation_th {
-  vertical-align: top;
-}
-
-.mypage_evaluation_comment {
-  resize: none;
-  width: 90%;
-  height: 100px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-}
-
-.favorite_shop {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .mypage_validation {

@@ -29,7 +29,7 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
     <img width="1440" alt="rese login" src="https://user-images.githubusercontent.com/95161114/177025690-ae7d3685-0f4e-4dc5-91ac-464bfbc34b71.png">
 
 -   マイページ
-    <img width="1440" alt="rese mypage" src="https://user-images.githubusercontent.com/95161114/177025850-410c9988-2f31-4fd7-8eac-741bf8c26ff5.png">
+    <img width="1440" alt="スクリーンショット 2022-08-02 12 47 07" src="https://user-images.githubusercontent.com/95161114/182287798-2dbee95c-3b1e-432d-b3ed-77276344d6e0.png">
 
 -   飲食店詳細ページ
     <img width="1440" alt="rese detail" src="https://user-images.githubusercontent.com/95161114/177025872-3b33a8ec-9a4b-464f-b909-5aa557299661.png">
@@ -95,7 +95,9 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
 
    DB_PASSWORD=root
    
-   ※今回認証機能はMailtrapの使用を想定しています。適宜Mailtrapのアカウントを登録し、.envを変更してください。
+   ※今回メール認証機能はMailtrapの使用を想定しています。
+   
+   適宜Mailtrapのアカウントを登録し、.envを変更してください。
 
 8. DB のテーブルを作り、シーディングする
 
@@ -128,6 +130,8 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
 ## 9.苦労した点
 
 heroku へのマイグレーションがなかなかうまくいかなかったこと。
+
+また、最後の最後でHerokuにデプロイしたら画像が非表示になったこと。
 
 ## 10.DB 設計
 
