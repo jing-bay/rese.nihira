@@ -55,67 +55,67 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
 
 1. コピーしたソースコードを保存したいディレクトリに「cd」コマンドで移動後、以下のようにコマンドを入力します。
 
-   `git clone https://github.com/jing-bay/rese.nihira.git`
+    `git clone https://github.com/jing-bay/rese.nihira.git`
 
-   ※コピーしたディレクトリ内を確認した時、README.mdだけがディレクトリ内に存在する場合、「cd」コマンドでコピーしたディレクトリに移動後、以下のようにコマンドを入力します。
+    ※コピーしたディレクトリ内を確認した時、README.mdだけがディレクトリ内に存在する場合、「cd」コマンドでコピーしたディレクトリに移動後、以下のようにコマンドを入力します。
 
-   `git checkout main`
+    `git checkout main`
 
 2. vender ディレクトリは管理対象外なので、改めて install する
 
-   （composer をダウンロードしていない場合は先にしておくこと）
+    （composer をダウンロードしていない場合は先にしておくこと）
 
-   `$ composer install`
+    `$ composer install`
 
 3. .env を作る
 
-   `$ copy .env`
+    `$ copy .env`
 
 4. .env の APP_KEY を作る
 
-   `$ php artisan key:generate`
+    `$ php artisan key:generate`
 
 5. .env の APP_NAME を変更
 
-   APP_NAME = RESE
+    APP_NAME = RESE
 
 6. .env の APP_URL を変更
 
-   ローカルの場合はポート番号も含める
+    ローカルの場合はポート番号も含める
 
-   APP_URL=http://localhost:8000
+    APP_URL=http://localhost:8000
 
 7. MySQL などににログインしてDBを作る
 
-   DB 名：resedb
+    DB 名：resedb
 
 8. .env に DB 情報を記載する
 
-   DB_CONNECTION=mysql
+    DB_CONNECTION=mysql
 
-   DB_HOST=127.0.0.1
+    DB_HOST=127.0.0.1
 
-   DB_PORT=3306
+    DB_PORT=3306
 
-   DB_DATABASE=resedb
+    DB_DATABASE=resedb
 
-   DB_USERNAME=root
+    DB_USERNAME=root
 
-   DB_PASSWORD=root
-   
-   ※今回メール認証機能はMailtrapの使用を想定しています。
-   
-   適宜Mailtrapのアカウントを登録し、.envを変更してください。
+    DB_PASSWORD=root
+
+    ※今回メール認証機能はMailtrapの使用を想定しています。
+
+    適宜Mailtrapのアカウントを登録し、.envを変更してください。
 
 9. DB のテーブルを作り、シーディングする
 
-   `$ php artisan migrate`
+    `$ php artisan migrate`
 
-   `$ php artisan db:seed`
+    `$ php artisan db:seed`
 
 10. ファイルの中でサーバーを立ち上げる
 
-   `$ php artisan serve`
+    `$ php artisan serve`
 
 ## 7.機能一覧
 
@@ -172,8 +172,8 @@ heroku へのマイグレーションがなかなかうまくいかなかった�
 | ----------- | ------------------------------------ | --------------------- |
 | id          | unsigned bigint/PRIMARY KEY/NOT NULL | 飲食店を識別する ID   |
 | name        | varchar(255)/NOT NULL                | 店名                  |
-| area_id     | unsigned bigint/NOT NULL             | 地域を識別する ID     |
-| category_id | unsigned bigint/NOT NULL             | ジャンルを識別する ID |
+| area_id     | unsigned bigint/NOT NULL/FOREIGN KEY | 地域を識別する ID     |
+| category_id | unsigned bigint/NOT NULL/FOREIGN KEY | ジャンルを識別する ID |
 | overview    | text/NOT NULL                        | 概要                  |
 | shopimg     | varchar(255)/NOT NULL                | お店の画像            |
 | created_at  | timestamp                            | 作成日時              |
@@ -205,8 +205,8 @@ heroku へのマイグレーションがなかなかうまくいかなかった�
 | カラム名 | 属性 | 役割 |
 | ---- | ---- | ---- |
 | id | unsigned bigint/PRIMARY KEY/NOT NULL | 予約情報を識別する ID |
-| shop_id | unsigned bigint/NOT NULL | 飲食店を識別する ID |
-| user_id | unsigned bigint/NOT NULL | ユーザーを識別する ID |
+| shop_id | unsigned bigint/NOT NULL/FOREIGN KEY | 飲食店を識別する ID |
+| user_id | unsigned bigint/NOT NULL/FOREIGN KEY | ユーザーを識別する ID |
 | booking_date | date/NOT NULL | 予約日 |
 | booking_time | time/NOT NULL | 予約時間 |
 | number | unsigned tinyint/NOT NULL | 予約人数 |
@@ -219,8 +219,8 @@ heroku へのマイグレーションがなかなかうまくいかなかった�
 | カラム名 | 属性 | 役割 |
 | ---- | ---- | ---- |
 | id | unsigned bigint/PRIMARY KEY/NOT NULL | お気に入り情報を識別する ID |
-| shop_id | unsigned bigint/NOT NULL | 飲食店を識別する ID |
-| user_id | unsigned bigint/NOT NULL | ユーザーを識別する ID |
+| shop_id | unsigned bigint/NOT NULL/FOREIGN KEY | 飲食店を識別する ID |
+| user_id | unsigned bigint/NOT NULL/FOREIGN KEY | ユーザーを識別する ID |
 | created_at | timestamp | 作成日時 |
 | updated_at | timestamp | 更新日時 |
 
@@ -230,7 +230,7 @@ heroku へのマイグレーションがなかなかうまくいかなかった�
 | カラム名 | 属性 | 役割 |
 | ---- | ---- | ---- |
 | id | unsigned bigint/PRIMARY KEY/NOT NULL | 評価情報を識別する ID |
-| booking_id | unsigned bigint/NOT NULL | 予約情報を識別する ID |
+| booking_id | unsigned bigint/NOT NULL/FOREIGN KEY | 予約情報を識別する ID |
 | evaluation | unsigned tinyint/NOT NULL | 5 段階評価 |
 | comment | text/NOT NULL | コメント |
 | created_at | timestamp | 作成日時 |
