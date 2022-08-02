@@ -23,16 +23,16 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
     <img width="1440" alt="rese registration" src="https://user-images.githubusercontent.com/95161114/177147848-bf680776-80b0-4846-a503-6acd41335b02.png">
 
 -   サンクスページ
-    <img width="1440" alt="rese thanks" src="https://user-images.githubusercontent.com/95161114/177025683-4578601e-4d06-4550-bede-dbf27a936554.png">
+    <img width="1440" alt="rese thanks" src="https://user-images.githubusercontent.com/95161114/182294283-d5a3ca3c-49cb-422c-aaf4-8b51abec2e4a.png">
 
 -   ログインページ
     <img width="1440" alt="rese login" src="https://user-images.githubusercontent.com/95161114/177025690-ae7d3685-0f4e-4dc5-91ac-464bfbc34b71.png">
 
 -   マイページ
-    <img width="1440" alt="スクリーンショット 2022-08-02 12 47 07" src="https://user-images.githubusercontent.com/95161114/182287798-2dbee95c-3b1e-432d-b3ed-77276344d6e0.png">
+    <img width="1440" alt="rese mypage" src="https://user-images.githubusercontent.com/95161114/182287798-2dbee95c-3b1e-432d-b3ed-77276344d6e0.png">
 
 -   飲食店詳細ページ
-    <img width="1440" alt="スクリーンショット 2022-08-02 13 29 40" src="https://user-images.githubusercontent.com/95161114/182292008-2050c9e2-7e05-44dc-84a8-c264b16cf01b.png">
+    <img width="1440" alt="rese detail" src="https://user-images.githubusercontent.com/95161114/182292008-2050c9e2-7e05-44dc-84a8-c264b16cf01b.png">
 
 -   予約完了ページ
     <img width="1440" alt="rese done" src="https://user-images.githubusercontent.com/95161114/177025879-f6f97dac-2a3d-4de1-8df2-e84317cc54fb.png">
