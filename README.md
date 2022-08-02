@@ -54,12 +54,12 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
 ## 6.環境構築手順
 
 1. コピーしたソースコードを保存したいディレクトリに「cd」コマンドで移動後、以下のようにコマンドを入力します。
-    
-    `git clone https://github.com/jing-bay/rese.nihira.git`
 
-    ※コピーしたディレクトリ内を確認した時、README.mdだけがディレクトリ内に存在する場合、「cd」コマンドでコピーしたディレクトリに移動後、以下のようにコマンドを入力します。
+   `git clone https://github.com/jing-bay/rese.nihira.git`
 
-    `git checkout main`
+   ※コピーしたディレクトリ内を確認した時、README.mdだけがディレクトリ内に存在する場合、「cd」コマンドでコピーしたディレクトリに移動後、以下のようにコマンドを入力します。
+
+   `git checkout main`
 
 2. vender ディレクトリは管理対象外なので、改めて install する
 
