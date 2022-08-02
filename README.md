@@ -53,35 +53,43 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
 
 ## 6.環境構築手順
 
-1. vender ディレクトリは管理対象外なので、改めて install する
+1. コピーしたソースコードを保存したいディレクトリに「cd」コマンドで移動後、以下のようにコマンドを入力します。
+    
+    `git clone https://github.com/jing-bay/rese.nihira.git`
+
+    ※コピーしたディレクトリ内を確認した時、README.mdだけがディレクトリ内に存在する場合、「cd」コマンドでコピーしたディレクトリに移動後、以下のようにコマンドを入力します。
+
+    `git checkout main`
+
+2. vender ディレクトリは管理対象外なので、改めて install する
 
    （composer をダウンロードしていない場合は先にしておくこと）
 
    `$ composer install`
 
-2. .env を作る
+3. .env を作る
 
    `$ copy .env`
 
-3. .env の APP_KEY を作る
+4. .env の APP_KEY を作る
 
    `$ php artisan key:generate`
 
-4. .env の APP_NAME を変更
+5. .env の APP_NAME を変更
 
    APP_NAME = RESE
 
-5. .env の APP_URL を変更
+6. .env の APP_URL を変更
 
    ローカルの場合はポート番号も含める
 
    APP_URL=http://localhost:8000
 
-6. MySQL などににログインしてDBを作る
+7. MySQL などににログインしてDBを作る
 
    DB 名：resedb
 
-7. .env に DB 情報を記載する
+8. .env に DB 情報を記載する
 
    DB_CONNECTION=mysql
 
@@ -99,13 +107,13 @@ Heroku デプロイ\_URL： https://aqueous-wildwood-93146.herokuapp.com/
    
    適宜Mailtrapのアカウントを登録し、.envを変更してください。
 
-8. DB のテーブルを作り、シーディングする
+9. DB のテーブルを作り、シーディングする
 
    `$ php artisan migrate`
 
    `$ php artisan db:seed`
 
-9. ファイルの中でサーバーを立ち上げる
+10. ファイルの中でサーバーを立ち上げる
 
    `$ php artisan serve`
 
